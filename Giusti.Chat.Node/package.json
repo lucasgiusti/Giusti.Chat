@@ -1,0 +1,17 @@
+{
+  "name": "Giusti.Chat.Node",
+  "version": "0.0.0",
+  "description": "Giusti.Chat.Node",
+  "socket.io": "1.4.5",
+  "main": "server.js",
+  "author": {
+    "name": "giust",
+    "email": ""
+  },
+  "dependencies": {
+    "body-parser": "^1.15.0",
+    "express": "^4.13.4",
+    "path": "^0.12.7",
+    "socket.io": "^1.4.5"
+  }
+}

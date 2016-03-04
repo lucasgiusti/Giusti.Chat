@@ -12,6 +12,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Giusti.Chat.Web", "Giusti.C
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Giusti.Chat.Service.Mail", "Giusti.Chat.Service.Mail\Giusti.Chat.Service.Mail.csproj", "{8F5A7876-4B92-4E12-AAC7-7262763B6DE9}"
 EndProject
+Project("{9092AA53-FB77-4645-B42D-1CCCA6BD08BD}") = "Giusti.Chat.Node", "Giusti.Chat.Node\Giusti.Chat.Node.njsproj", "{4EEE76A7-EA2A-47DC-9F5F-2B24347B868D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -38,6 +40,10 @@ Global
 		{8F5A7876-4B92-4E12-AAC7-7262763B6DE9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8F5A7876-4B92-4E12-AAC7-7262763B6DE9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8F5A7876-4B92-4E12-AAC7-7262763B6DE9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4EEE76A7-EA2A-47DC-9F5F-2B24347B868D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4EEE76A7-EA2A-47DC-9F5F-2B24347B868D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4EEE76A7-EA2A-47DC-9F5F-2B24347B868D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4EEE76A7-EA2A-47DC-9F5F-2B24347B868D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
