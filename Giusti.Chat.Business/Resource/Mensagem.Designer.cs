@@ -124,6 +124,15 @@ namespace Giusti.Chat.Business.Resource {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Email inválido.
+        /// </summary>
+        internal static string Empresa_EmailUsuarioAdmInvalido {
+            get {
+                return ResourceManager.GetString("Empresa_EmailUsuarioAdmInvalido", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Empresa excluída com sucesso.
         /// </summary>
         internal static string Empresa_ExcluiEmpresaOK {
@@ -156,6 +165,15 @@ namespace Giusti.Chat.Business.Resource {
         internal static string Empresa_SalvaEmpresaOK {
             get {
                 return ResourceManager.GetString("Empresa_SalvaEmpresaOK", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Senha inválida.
+        /// </summary>
+        internal static string Empresa_SenhaInvalida {
+            get {
+                return ResourceManager.GetString("Empresa_SenhaInvalida", resourceCulture);
             }
         }
         

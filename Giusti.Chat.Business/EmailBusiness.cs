@@ -13,14 +13,14 @@ namespace Giusti.Chat.Business
 {
     public class EmailBusiness : BusinessBase
     {
-        public void GeraEmailEsqueciSenha(Usuario itemGravar, string novaSenha)
+        public void GeraEmailEsqueciSenha(string nome, string emailDestinatario, string novaSenha)
         {
             Email email = new Email();
             email.Assunto = Constantes.AssuntoEmailEsqueciSenha;
-            email.Corpo = string.Format(Constantes.CorpoEmailEsqueciSenha, itemGravar.Nome, novaSenha);
+            email.Corpo = string.Format(Constantes.CorpoEmailEsqueciSenha, nome, novaSenha);
             email.DataInclusao = DateTime.Now;
             email.FuncionalidadeId = Convert.ToInt32(Constantes.FuncionalidadeAlterarSenha);
-            email.Destinatario = itemGravar.Email;
+            email.Destinatario = emailDestinatario;
             SalvaEmail(email);
         }
 

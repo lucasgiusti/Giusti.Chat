@@ -55,6 +55,46 @@ namespace Giusti.Chat.Business
             return RetornoAcao;
         }
 
+        public UsuarioLogado EfetuaLoginSistema(string email, string senha, string ip, string nomeMaquina)
+        {
+            LimpaValidacao();
+            if (string.IsNullOrEmpty(email))
+                IncluiErroBusiness("Usuario_Email");
+
+            if (string.IsNullOrEmpty(senha))
+                IncluiErroBusiness("Usuario_Senha");
+
+            UsuarioLogado retorno = null;
+            if (IsValid())
+            {
+                EmpresaBusiness bizEmpresa = new EmpresaBusiness();
+                Empresa itemBase = bizEmpresa.RetornaEmpresa_EmailUsuarioAdm(email);
+
+                if (itemBase == null)
+                    IncluiErroBusiness("Usuario_EmailInvalido");
+
+                if (IsValid() && !PasswordHash.ValidatePassword(senha, itemBase.SenhaUsuarioAdm))
+                    IncluiErroBusiness("Usuario_SenhaInvalida");
+
+                if (IsValid())
+                {
+                    retorno = new UsuarioLogado();
+                    retorno.Id = itemBase.Id.Value;
+                    retorno.DataHoraAcesso = DateTime.Now;
+                    retorno.Email = itemBase.EmailUsuarioAdm;
+                    retorno.Nome = itemBase.Nome;
+                    retorno.WorkstationId = nomeMaquina;
+
+                    PerfilUsuarioBusiness bizPerfilUsuario = new PerfilUsuarioBusiness();
+                    IList<string> listFuncionalidade = bizPerfilUsuario.RetornaFuncionalidades_UsuarioId((int)itemBase.Id);
+
+                    UsuarioBusiness bizUsuario = new UsuarioBusiness();
+                    retorno.Token = bizUsuario.GeraToken(email, string.Join(",", new List<string>() { Constantes.FuncionalidadeAlterarSenha }));
+                }
+
+            }
+            return retorno;
+        }
         public void SalvaEmpresa(Empresa itemGravar)
         {
             LimpaValidacao();
@@ -80,6 +120,49 @@ namespace Giusti.Chat.Business
                 {
                     data.ExcluiEmpresa(itemGravar);
                     IncluiSucessoBusiness("Empresa_ExcluiEmpresaOK");
+                }
+            }
+        }
+        public void AlteraSenha(Empresa itemGravar)
+        {
+            LimpaValidacao();
+            ValidaRegrasAlterarSenha(ref itemGravar);
+            if (IsValid())
+            {
+                ValidateService(itemGravar);
+                ValidaRegrasSalvar(itemGravar);
+                if (IsValid())
+                {
+                    using (EmpresaData data = new EmpresaData())
+                    {
+                        data.SalvaEmpresa(itemGravar);
+                        IncluiSucessoBusiness("Usuario_SenhaAlteradaOK");
+                    }
+                }
+            }
+        }
+        public void GeraNovaSenha(Empresa itemGravar)
+        {
+            LimpaValidacao();
+            ValidaRegrasGerarNovaSenha(ref itemGravar);
+            if (IsValid())
+            {
+                string novaSenha = string.Empty;
+                novaSenha = PasswordHash.GenerateRandomPassword();
+                itemGravar.SenhaUsuarioAdm = novaSenha;
+                itemGravar.SenhaUsuarioAdmConfirmacao = novaSenha;
+
+                ValidateService(itemGravar);
+                ValidaRegrasSalvar(itemGravar);
+                if (IsValid())
+                {
+                    using (EmpresaData data = new EmpresaData())
+                    {
+                        data.SalvaEmpresa(itemGravar);
+                        IncluiSucessoBusiness("Usuario_NovaSenhaGeradaOK");
+
+                        GeraEmailEsqueciSenha(itemGravar, novaSenha);
+                    }
                 }
             }
         }
@@ -156,10 +239,66 @@ namespace Giusti.Chat.Business
 
 
         }
+        public void ValidaRegrasAlterarSenha(ref Empresa itemGravar)
+        {
+            LimpaValidacao();
+            if (string.IsNullOrEmpty(itemGravar.EmailUsuarioAdm))
+                IncluiErroBusiness("Usuario_Email");
+
+            if (string.IsNullOrEmpty(itemGravar.SenhaUsuarioAdm))
+                IncluiErroBusiness("Usuario_Senha");
+
+            if (string.IsNullOrEmpty(itemGravar.NovaSenhaUsuarioAdm))
+                IncluiErroBusiness("Usuario_NovaSenha");
+
+            if (string.IsNullOrEmpty(itemGravar.SenhaUsuarioAdmConfirmacao))
+                IncluiErroBusiness("Usuario_NovaSenhaConfirmacao");
+
+            if (IsValid())
+            {
+                Empresa itemBase = RetornaEmpresa_EmailUsuarioAdm(itemGravar.EmailUsuarioAdm);
+
+                if (itemBase == null)
+                    IncluiErroBusiness("Usuario_EmailInvalido");
+
+                if (IsValid() && !PasswordHash.ValidatePassword(itemGravar.SenhaUsuarioAdm, itemBase.SenhaUsuarioAdm))
+                    IncluiErroBusiness("Usuario_SenhaInvalida");
+
+                if (IsValid())
+                {
+                    itemBase.SenhaUsuarioAdm = itemGravar.NovaSenhaUsuarioAdm;
+                    itemBase.SenhaUsuarioAdmConfirmacao = itemGravar.SenhaUsuarioAdmConfirmacao;
+                    itemGravar = itemBase;
+                }
+            }
+        }
+        public void ValidaRegrasGerarNovaSenha(ref Empresa itemGravar)
+        {
+            LimpaValidacao();
+            if (string.IsNullOrEmpty(itemGravar.EmailUsuarioAdm))
+                IncluiErroBusiness("Usuario_Email");
+
+            if (IsValid())
+            {
+                Empresa itemBase = RetornaEmpresa_EmailUsuarioAdm(itemGravar.EmailUsuarioAdm);
+
+                if (itemBase == null)
+                    IncluiErroBusiness("Usuario_EmailInvalido");
+
+                if (IsValid())
+                    itemGravar = itemBase;
+            }
+        }
         public void ValidaExistencia(Empresa itemGravar)
         {
             if (itemGravar == null)
                 IncluiErroBusiness("Empresa_NaoEncontrada");
+        }
+
+        public void GeraEmailEsqueciSenha(Empresa itemGravar, string novaSenha)
+        {
+            EmailBusiness biz = new EmailBusiness();
+            biz.GeraEmailEsqueciSenha(itemGravar.Nome, itemGravar.EmailUsuarioAdm, novaSenha);
         }
     }
 }

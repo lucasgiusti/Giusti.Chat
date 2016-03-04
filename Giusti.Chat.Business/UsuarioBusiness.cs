@@ -269,8 +269,7 @@ namespace Giusti.Chat.Business
 
             if (IsValid())
             {
-                UsuarioBusiness bizUsuario = new UsuarioBusiness();
-                Usuario itemBase = bizUsuario.RetornaUsuario_Email(itemGravar.Email);
+                Usuario itemBase = RetornaUsuario_Email(itemGravar.Email);
 
                 if (itemBase == null)
                     IncluiErroBusiness("Usuario_EmailInvalido");
@@ -294,8 +293,7 @@ namespace Giusti.Chat.Business
 
             if (IsValid())
             {
-                UsuarioBusiness bizUsuario = new UsuarioBusiness();
-                Usuario itemBase = bizUsuario.RetornaUsuario_Email(itemGravar.Email);
+                Usuario itemBase = RetornaUsuario_Email(itemGravar.Email);
 
                 if (itemBase == null)
                     IncluiErroBusiness("Usuario_EmailInvalido");
@@ -310,7 +308,7 @@ namespace Giusti.Chat.Business
                 IncluiErroBusiness("Usuario_NaoEncontrado");
         }
 
-        private string GeraToken(string email, string funcionalidades)
+        public string GeraToken(string email, string funcionalidades)
         {
             try
             {
@@ -327,7 +325,7 @@ namespace Giusti.Chat.Business
         public void GeraEmailEsqueciSenha(Usuario itemGravar, string novaSenha)
         {
             EmailBusiness biz = new EmailBusiness();
-            biz.GeraEmailEsqueciSenha(itemGravar, novaSenha);
+            biz.GeraEmailEsqueciSenha(itemGravar.Nome, itemGravar.Email, novaSenha);
         }
 
     }

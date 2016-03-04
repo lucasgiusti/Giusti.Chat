@@ -138,6 +138,9 @@
   <data name="Empresa_EmailUsuarioAdm" xml:space="preserve">
     <value>O campo email usuário adm é obrigatório</value>
   </data>
+  <data name="Empresa_EmailUsuarioAdmInvalido" xml:space="preserve">
+    <value>Email inválido</value>
+  </data>
   <data name="Empresa_ExcluiEmpresaOK" xml:space="preserve">
     <value>Empresa excluída com sucesso</value>
   </data>
@@ -149,6 +152,9 @@
   </data>
   <data name="Empresa_SalvaEmpresaOK" xml:space="preserve">
     <value>Empresa salva com sucesso</value>
+  </data>
+  <data name="Empresa_SenhaInvalida" xml:space="preserve">
+    <value>Senha inválida</value>
   </data>
   <data name="Empresa_SenhaUsuarioAdm" xml:space="preserve">
     <value>O campo senha usuário adm é obrigatório</value>
