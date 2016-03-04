@@ -132,6 +132,33 @@
   <data name="Email_SalvaEmailOK" xml:space="preserve">
     <value>Email salvo com sucesso</value>
   </data>
+  <data name="Empresa_CadastroDuplicado" xml:space="preserve">
+    <value>Já existe uma empresa com o email usuário adm informado</value>
+  </data>
+  <data name="Empresa_EmailUsuarioAdm" xml:space="preserve">
+    <value>O campo email usuário adm é obrigatório</value>
+  </data>
+  <data name="Empresa_ExcluiEmpresaOK" xml:space="preserve">
+    <value>Empresa excluída com sucesso</value>
+  </data>
+  <data name="Empresa_NaoEncontrada" xml:space="preserve">
+    <value>Empresa não encontrada</value>
+  </data>
+  <data name="Empresa_Nome" xml:space="preserve">
+    <value>O campo nome é obrigatório</value>
+  </data>
+  <data name="Empresa_SalvaEmpresaOK" xml:space="preserve">
+    <value>Empresa salva com sucesso</value>
+  </data>
+  <data name="Empresa_SenhaUsuarioAdm" xml:space="preserve">
+    <value>O campo senha usuário adm é obrigatório</value>
+  </data>
+  <data name="Empresa_SenhaUsuarioAdmConfirmacao" xml:space="preserve">
+    <value>O campo confirmação de senha é obrigatório</value>
+  </data>
+  <data name="Empresa_SenhaUsuarioAdmConfirmacao_Incorreta" xml:space="preserve">
+    <value>O campo confirmação de senha é inválido</value>
+  </data>
   <data name="Funcionalidade_ExcluiFuncionalidadeOK" xml:space="preserve">
     <value>Funcionalidade excluída com sucesso</value>
   </data>

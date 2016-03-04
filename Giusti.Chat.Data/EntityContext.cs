@@ -24,6 +24,7 @@ namespace Giusti.Chat.Data
         public DbSet<Perfil> Perfis { get; set; }
         public DbSet<PerfilFuncionalidade> PerfilFuncionalidades { get; set; }
         public DbSet<PerfilUsuario> PerfilUsuarios { get; set; }
+        public DbSet<Empresa> Empresas { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
@@ -35,6 +36,7 @@ namespace Giusti.Chat.Data
             modelBuilder.Configurations.Add(new PerfilConfiguration());
             modelBuilder.Configurations.Add(new PerfilFuncionalidadeConfiguration());
             modelBuilder.Configurations.Add(new PerfilUsuarioConfiguration());
+            modelBuilder.Configurations.Add(new EmpresaConfiguration());
             base.OnModelCreating(modelBuilder);
         }
     }

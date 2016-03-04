@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
@@ -7,7 +7,7 @@
     <ProductVersion>
     </ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{0f38e6a2-061c-4488-bbba-cc2b8f3ad8d0}</ProjectGuid>
+    <ProjectGuid>{0F38E6A2-061C-4488-BBBA-CC2B8F3AD8D0}</ProjectGuid>
     <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
@@ -116,6 +116,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\Api\AlterarSenhaController.cs" />
+    <Compile Include="Controllers\Api\EmpresaController.cs" />
     <Compile Include="Controllers\Api\EsqueciSenhaController.cs" />
     <Compile Include="Controllers\Api\FuncionalidadeController.cs" />
     <Compile Include="Controllers\Api\LogController.cs" />
@@ -132,6 +133,7 @@
   <ItemGroup>
     <Content Include="app\app.js" />
     <Content Include="app\controllers\alterarSenhaController.js" />
+    <Content Include="app\controllers\empresaController.js" />
     <Content Include="app\controllers\esqueciSenhaController.js" />
     <Content Include="app\controllers\headerController.js" />
     <Content Include="app\controllers\homeController.js" />
@@ -141,6 +143,10 @@
     <Content Include="app\controllers\perfilController.js" />
     <Content Include="app\controllers\signinController.js" />
     <Content Include="app\controllers\usuarioController.js" />
+    <Content Include="app\templates\empresa\empresa-add.html" />
+    <Content Include="app\templates\empresa\empresa-edit.html" />
+    <Content Include="app\templates\empresa\empresa-view.html" />
+    <Content Include="app\templates\empresa\empresas.html" />
     <Content Include="app\templates\paginaNaoEncontrada.html" />
     <Content Include="app\templates\usuario\usuario-alterarSenha.html" />
     <Content Include="app\templates\usuario\usuario-esquecisenha.html" />

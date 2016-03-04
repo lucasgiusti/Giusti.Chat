@@ -1,10 +1,10 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{11e0e190-4edb-4487-9d4f-6e015ee95ea8}</ProjectGuid>
+    <ProjectGuid>{11E0E190-4EDB-4487-9D4F-6E015EE95EA8}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Giusti.Chat.Model</RootNamespace>
@@ -46,6 +46,7 @@
     <Compile Include="Dominio\Constantes.cs" />
     <Compile Include="Dominio\EnumSituacao.cs" />
     <Compile Include="Email.cs" />
+    <Compile Include="Empresa.cs" />
     <Compile Include="PerfilFuncionalidade.cs" />
     <Compile Include="Dominio\EnumTipoAcao.cs" />
     <Compile Include="Funcionalidade.cs" />
