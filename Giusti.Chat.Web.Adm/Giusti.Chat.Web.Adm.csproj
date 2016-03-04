@@ -116,6 +116,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\Api\AlterarSenhaController.cs" />
+    <Compile Include="Controllers\Api\AreaController.cs" />
     <Compile Include="Controllers\Api\EsqueciSenhaController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\Api\SigninController.cs" />

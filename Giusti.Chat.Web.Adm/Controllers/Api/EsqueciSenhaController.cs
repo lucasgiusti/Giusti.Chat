@@ -10,7 +10,7 @@ using Giusti.Chat.Model.Dominio;
 using System.Web;
 using Giusti.Chat.Business;
 
-namespace Giusti.Chat.Web.Controllers.Api
+namespace Giusti.Chat.Web.Adm.Controllers.Api
 {
     /// <summary>
     /// EsqueciSenha

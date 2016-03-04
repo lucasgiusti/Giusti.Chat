@@ -117,6 +117,18 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="Area_ExcluiAreaOK" xml:space="preserve">
+    <value>Área excluída com sucesso</value>
+  </data>
+  <data name="Area_NaoEncontrada" xml:space="preserve">
+    <value>Área não encontrada</value>
+  </data>
+  <data name="Area_Nome" xml:space="preserve">
+    <value>O campo nome é obrigatório</value>
+  </data>
+  <data name="Area_SalvaAreaOK" xml:space="preserve">
+    <value>Área salva com sucesso</value>
+  </data>
   <data name="Autenticacao_AcessoNegado" xml:space="preserve">
     <value>O usuário {0} não tem permissão de acesso à funcionalidade {1}</value>
   </data>

@@ -50,6 +50,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AreaData.cs" />
+    <Compile Include="Configuration\AreaConfiguration.cs" />
     <Compile Include="Configuration\EmailConfiguration.cs" />
     <Compile Include="Configuration\EmpresaConfiguration.cs" />
     <Compile Include="Configuration\PerfilUsuarioConfiguration.cs" />

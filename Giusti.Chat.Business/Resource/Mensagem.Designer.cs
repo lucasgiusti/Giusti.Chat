@@ -61,6 +61,42 @@ namespace Giusti.Chat.Business.Resource {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Área excluída com sucesso.
+        /// </summary>
+        internal static string Area_ExcluiAreaOK {
+            get {
+                return ResourceManager.GetString("Area_ExcluiAreaOK", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Área não encontrada.
+        /// </summary>
+        internal static string Area_NaoEncontrada {
+            get {
+                return ResourceManager.GetString("Area_NaoEncontrada", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to O campo nome é obrigatório.
+        /// </summary>
+        internal static string Area_Nome {
+            get {
+                return ResourceManager.GetString("Area_Nome", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Área salva com sucesso.
+        /// </summary>
+        internal static string Area_SalvaAreaOK {
+            get {
+                return ResourceManager.GetString("Area_SalvaAreaOK", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to O usuário {0} não tem permissão de acesso à funcionalidade {1}.
         /// </summary>
         internal static string Autenticacao_AcessoNegado {

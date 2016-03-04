@@ -5,6 +5,10 @@ var app = angular.module('app', ['ngRoute', 'ngAnimate', 'ui.bootstrap', 'ngCook
         $routeProvider.when('/alterarsenha', { templateUrl: 'app/templates/empresa/empresa-alterarSenha.html', controller: 'alterarSenhaController' });
         $routeProvider.when('/esquecisenha', { templateUrl: 'app/templates/empresa/empresa-esqueciSenha.html', controller: 'esqueciSenhaController' });
         $routeProvider.when('/paginanaoencontrada', { templateUrl: 'app/templates/paginaNaoEncontrada.html', controller: 'paginaNaoEncontradaController' });
+        $routeProvider.when('/area', { templateUrl: 'app/templates/area/areas.html', controller: 'areaController' });
+        $routeProvider.when('/area/add', { templateUrl: 'app/templates/area/area-add.html', controller: 'areaController' });
+        $routeProvider.when('/area/:id/edit', { templateUrl: 'app/templates/area/area-edit.html', controller: 'areaController' });
+        $routeProvider.when('/area/:id', { templateUrl: 'app/templates/area/area-view.html', controller: 'areaController' });
         $routeProvider.otherwise({ redirectTo: '/paginanaoencontrada' });
         $locationProvider.html5Mode(true);
     });

@@ -89,7 +89,13 @@ namespace Giusti.Chat.Business
                     IList<string> listFuncionalidade = bizPerfilUsuario.RetornaFuncionalidades_UsuarioId((int)itemBase.Id);
 
                     UsuarioBusiness bizUsuario = new UsuarioBusiness();
-                    retorno.Token = bizUsuario.GeraToken(email, string.Join(",", new List<string>() { Constantes.FuncionalidadeAlterarSenha }));
+                    retorno.Token = bizUsuario.GeraToken(email, string.Join(",", new List<string>() {
+                        Constantes.FuncionalidadeAlterarSenha,
+                        Constantes.FuncionalidadeArea,
+                        Constantes.FuncionalidadeAreaConsulta,
+                        Constantes.FuncionalidadeAreaEdicao,
+                        Constantes.FuncionalidadeAreaInclusao,
+                        Constantes.FuncionalidadeAreaExclusao }));
                 }
 
             }

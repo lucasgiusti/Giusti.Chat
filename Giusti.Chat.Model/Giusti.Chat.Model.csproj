@@ -43,6 +43,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Area.cs" />
     <Compile Include="Dominio\Constantes.cs" />
     <Compile Include="Dominio\EnumSituacao.cs" />
     <Compile Include="Email.cs" />

@@ -61,6 +61,15 @@ namespace Giusti.Chat.Model.Resource {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to O tamanho do campo área excedeu o limite.
+        /// </summary>
+        internal static string Area_NomeTamanho {
+            get {
+                return ResourceManager.GetString("Area_NomeTamanho", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to O tamanho do campo assunto excedeu o limite.
         /// </summary>
         internal static string Email_AssuntoTamanho {

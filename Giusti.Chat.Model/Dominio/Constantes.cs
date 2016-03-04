@@ -64,5 +64,17 @@ namespace Giusti.Chat.Model.Dominio
         public static readonly string FuncionalidadeNomeEmpresaEdicao = "Empresa Edição";
         public static readonly string FuncionalidadeNomeEmpresaInclusao = "Empresa Inclusão";
         public static readonly string FuncionalidadeNomeEmpresaExclusao = "Empresa Exclusão";
+
+        public static readonly string FuncionalidadeArea = "23";
+        public static readonly string FuncionalidadeAreaConsulta = "24";
+        public static readonly string FuncionalidadeAreaEdicao = "25";
+        public static readonly string FuncionalidadeAreaInclusao = "26";
+        public static readonly string FuncionalidadeAreaExclusao = "27";
+
+        public static readonly string FuncionalidadeNomeArea = "Área";
+        public static readonly string FuncionalidadeNomeAreaConsulta = "Área Consulta";
+        public static readonly string FuncionalidadeNomeAreaEdicao = "Área Edição";
+        public static readonly string FuncionalidadeNomeAreaInclusao = "Área Inclusão";
+        public static readonly string FuncionalidadeNomeAreaExclusao = "Área Exclusão";
     }
 }
