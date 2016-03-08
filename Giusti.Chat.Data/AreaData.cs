@@ -8,16 +8,23 @@ namespace Giusti.Chat.Data
 {
     public class AreaData : DataBase
     {
-        public Area RetornaArea_Id(int id)
+        public Area RetornaArea_Id(int id, int? empresaId)
         {
             IQueryable<Area> query = Context.Areas;
 
             query = query.Where(d => d.Id == id);
+
+            if (empresaId.HasValue)
+                query = query.Where(a => a.EmpresaId == empresaId);
+
             return query.FirstOrDefault();
         }
-        public IList<Area> RetornaAreas()
+        public IList<Area> RetornaAreas(int? empresaId)
         {
             IQueryable<Area> query = Context.Areas;
+
+            if (empresaId.HasValue)
+                query = query.Where(a => a.EmpresaId == empresaId);
 
             return query.ToList();
         }

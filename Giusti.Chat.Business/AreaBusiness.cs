@@ -12,7 +12,7 @@ namespace Giusti.Chat.Business
 {
     public class AreaBusiness : BusinessBase
     {
-        public Area RetornaArea_Id(int id)
+        public Area RetornaArea_Id(int id, int? empresaId)
         {
             LimpaValidacao();
             Area RetornoAcao = null;
@@ -20,13 +20,13 @@ namespace Giusti.Chat.Business
             {
                 using (AreaData data = new AreaData())
                 {
-                    RetornoAcao = data.RetornaArea_Id(id);
+                    RetornoAcao = data.RetornaArea_Id(id, empresaId);
                 }
             }
 
             return RetornoAcao;
         }
-        public IList<Area> RetornaAreas()
+        public IList<Area> RetornaAreas(int? empresaId)
         {
             LimpaValidacao();
             IList<Area> RetornoAcao = new List<Area>();
@@ -34,18 +34,18 @@ namespace Giusti.Chat.Business
             {
                 using (AreaData data = new AreaData())
                 {
-                    RetornoAcao = data.RetornaAreas();
+                    RetornoAcao = data.RetornaAreas(empresaId);
                 }
             }
 
             return RetornoAcao;
         }
 
-        public void SalvaArea(Area itemGravar)
+        public void SalvaArea(Area itemGravar, int? empresaId)
         {
             LimpaValidacao();
             ValidateService(itemGravar);
-            ValidaRegrasSalvar(itemGravar);
+            ValidaRegrasSalvar(itemGravar, empresaId);
             if (IsValid())
             {
                 using (AreaData data = new AreaData())
@@ -55,11 +55,11 @@ namespace Giusti.Chat.Business
                 }
             }
         }
-        public void ExcluiArea(Area itemGravar)
+        public void ExcluiArea(Area itemGravar, int? empresaId)
         {
             LimpaValidacao();
             ValidateService(itemGravar);
-            ValidaRegrasExcluir(itemGravar);
+            ValidaRegrasExcluir(itemGravar, empresaId);
             if (IsValid())
             {
                 using (AreaData data = new AreaData())
@@ -70,17 +70,38 @@ namespace Giusti.Chat.Business
             }
         }
 
-        public void ValidaRegrasSalvar(Area itemGravar)
+        public void ValidaRegrasSalvar(Area itemGravar, int? empresaId)
         {
+            if (itemGravar.Id.HasValue)
+            {
+                Area itemBase = RetornaArea_Id((int)itemGravar.Id, empresaId);
+                ValidaExistencia(itemBase, empresaId);
+                if (IsValid())
+                {
+                    itemGravar.DataInclusao = itemBase.DataInclusao;
+                    itemGravar.DataAlteracao = DateTime.Now;
+                }
+            }
+            else
+                itemGravar.DataInclusao = DateTime.Now;
+
             if (IsValid() && string.IsNullOrWhiteSpace(itemGravar.Nome))
                 IncluiErroBusiness("Area_Nome");
+
+            if (IsValid())
+                itemGravar.EmpresaId = empresaId;
         }
-        public void ValidaRegrasExcluir(Area itemGravar)
+        public void ValidaRegrasExcluir(Area itemGravar, int? empresaId)
         {
             if (IsValid())
-                ValidaExistencia(itemGravar);
+            {
+                Area itemBase = RetornaArea_Id((int)itemGravar.Id, empresaId);
+                ValidaExistencia(itemGravar, empresaId);
+            }
+
+            
         }
-        public void ValidaExistencia(Area itemGravar)
+        public void ValidaExistencia(Area itemGravar, int? empresaId)
         {
             if (itemGravar == null)
                 IncluiErroBusiness("Area_NaoEncontrada");

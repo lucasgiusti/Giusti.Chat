@@ -105,6 +105,20 @@ namespace Giusti.Chat.Web.Adm.Library
 
             return RetornaTokenDescriptografado(token).Name;
         }
+        public int? RetornaIdAutenticado()
+        {
+            int? id = null;
+            Empresa empresa = null;
+
+            EmpresaBusiness biz = new EmpresaBusiness();
+
+            empresa = biz.RetornaEmpresa_EmailUsuarioAdm(RetornaEmailAutenticado());
+            if (empresa != null)
+                id = empresa.Id;
+
+
+            return id;
+        }
         protected string[] RetornaFuncionalidadesUsuario()
         {
             string token = RetornaToken();

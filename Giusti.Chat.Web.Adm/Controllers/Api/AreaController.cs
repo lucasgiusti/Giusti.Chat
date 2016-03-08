@@ -31,7 +31,7 @@ namespace Giusti.Chat.Web.Adm.Controllers.Api
                 VerificaAutenticacao(Constantes.FuncionalidadeAreaConsulta, Constantes.FuncionalidadeNomeAreaConsulta, biz);
 
                 //API
-                ResultadoBusca = new List<Area>(biz.RetornaAreas());
+                ResultadoBusca = new List<Area>(biz.RetornaAreas(RetornaIdAutenticado()));
 
                 if (!biz.IsValid())
                     throw new InvalidDataException();
@@ -65,7 +65,7 @@ namespace Giusti.Chat.Web.Adm.Controllers.Api
                 VerificaAutenticacao(Constantes.FuncionalidadeAreaConsulta, Constantes.FuncionalidadeNomeAreaConsulta, biz);
 
                 //API
-                ResultadoBusca = biz.RetornaArea_Id(id);
+                ResultadoBusca = biz.RetornaArea_Id(id, RetornaIdAutenticado());
 
                 if (!biz.IsValid())
                     throw new InvalidDataException();
@@ -98,7 +98,7 @@ namespace Giusti.Chat.Web.Adm.Controllers.Api
                 VerificaAutenticacao(Constantes.FuncionalidadeAreaInclusao, Constantes.FuncionalidadeNomeAreaInclusao, biz);
 
                 //API
-                biz.SalvaArea(itemSalvar);
+                biz.SalvaArea(itemSalvar, RetornaIdAutenticado());
                 if (!biz.IsValid())
                     throw new InvalidDataException();
 
@@ -134,7 +134,7 @@ namespace Giusti.Chat.Web.Adm.Controllers.Api
 
                 //API
                 itemSalvar.Id = id;
-                biz.SalvaArea(itemSalvar);
+                biz.SalvaArea(itemSalvar, RetornaIdAutenticado());
 
                 if (!biz.IsValid())
                     throw new InvalidDataException();
@@ -170,9 +170,9 @@ namespace Giusti.Chat.Web.Adm.Controllers.Api
                 VerificaAutenticacao(Constantes.FuncionalidadeAreaExclusao, Constantes.FuncionalidadeNomeAreaExclusao, biz);
 
                 //API
-                Area itemExcluir = biz.RetornaArea_Id(id);
+                Area itemExcluir = biz.RetornaArea_Id(id, RetornaIdAutenticado());
 
-                biz.ExcluiArea(itemExcluir);
+                biz.ExcluiArea(itemExcluir, RetornaIdAutenticado());
                 if (!biz.IsValid())
                     throw new InvalidDataException();
 

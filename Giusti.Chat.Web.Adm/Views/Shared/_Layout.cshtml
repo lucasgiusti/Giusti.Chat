@@ -23,6 +23,7 @@
     <script src="~/app/controllers/signinController.js" type="text/javascript"></script>
     <script src="~/app/controllers/headerController.js" type="text/javascript"></script>
     <script src="~/app/controllers/homeController.js" type="text/javascript"></script>
+    <script src="~/app/controllers/areaController.js" type="text/javascript"></script>
     <script src="~/app/controllers/alterarSenhaController.js" type="text/javascript"></script>
     <script src="~/app/controllers/esqueciSenhaController.js" type="text/javascript"></script>
     <script src="~/app/controllers/paginaNaoEncontradaController.js" type="text/javascript"></script>
@@ -51,7 +52,7 @@
                 <a class="navbar-brand" href="#" ng-click="gotoHome()">Giusti.Chat.Adm</a>
             </div>
             <div class="navbar-collapse collapse" uib-collapse="navbarCollapsed">
-                <ul class="nav navbar-nav">
+                <ul class="nav navbar-nav" ng-show="usuario != null">
                     <ul class="nav navbar-nav">
                         <li class="dropdown" uib-dropdown style="cursor:pointer">
                             <a class="dropdown-toggle" data-toggle="dropdown" uib-dropdown-toggle>Acesso</a>
@@ -67,7 +68,7 @@
                     </ul>
                 </ul>
 
-                <ul class="nav navbar-nav navbar-right">
+                <ul class="nav navbar-nav navbar-right" ng-show="usuario != null">
                     <li class="dropdown" uib-dropdown>
                         <a class="dropdown-toggle btn btn-link" data-toggle="dropdown" uib-dropdown-toggle style="border: 0px">
                             {{usuario.nome}}

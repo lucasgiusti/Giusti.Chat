@@ -129,12 +129,17 @@
   <ItemGroup>
     <Content Include="app\app.js" />
     <Content Include="app\controllers\alterarSenhaController.js" />
+    <Content Include="app\controllers\areaController.js" />
     <Content Include="app\controllers\esqueciSenhaController.js" />
     <Content Include="app\controllers\headerController.js" />
     <Content Include="app\controllers\homeController.js" />
     <Content Include="app\controllers\modalConfirmController.js" />
     <Content Include="app\controllers\paginaNaoEncontradaController.js" />
     <Content Include="app\controllers\signinController.js" />
+    <Content Include="app\templates\area\area-add.html" />
+    <Content Include="app\templates\area\area-edit.html" />
+    <Content Include="app\templates\area\area-view.html" />
+    <Content Include="app\templates\area\areas.html" />
     <Content Include="app\templates\empresa\empresa-alterarSenha.html" />
     <Content Include="app\templates\empresa\empresa-esquecisenha.html" />
     <Content Include="app\templates\paginaNaoEncontrada.html" />
