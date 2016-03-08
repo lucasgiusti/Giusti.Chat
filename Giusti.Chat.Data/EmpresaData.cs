@@ -15,17 +15,36 @@ namespace Giusti.Chat.Data
             query = query.Where(d => d.Id == id);
             return query.FirstOrDefault();
         }
-        public Empresa RetornaEmpresa_EmailUsuarioAdm(string emailUsuarioAdm)
+        public Empresa RetornaEmpresa_Id(int id, int? empresaId)
         {
             IQueryable<Empresa> query = Context.Empresas;
 
-            if (!string.IsNullOrEmpty(emailUsuarioAdm))
-                query = query.Where(d => d.EmailUsuarioAdm == emailUsuarioAdm);
+            query = query.Where(d => d.Id == id && d.Id == empresaId);
             return query.FirstOrDefault();
+        }
+        public bool ExisteUsuario_EmpresaId(int empresaId)
+        {
+            IQueryable<Usuario> query = Context.Usuarios;
+
+            query = query.Where(d => d.EmpresaId == empresaId);
+            return query.Any();
+        }
+        public bool ExisteArea_EmpresaId(int empresaId)
+        {
+            IQueryable<Area> query = Context.Areas;
+
+            query = query.Where(d => d.EmpresaId == empresaId);
+            return query.Any();
         }
         public IList<Empresa> RetornaEmpresas()
         {
             IQueryable<Empresa> query = Context.Empresas;
+
+            return query.ToList();
+        }
+        public IList<Empresa> RetornaEmpresas(int? empresaId)
+        {
+            IQueryable<Empresa> query = Context.Empresas.Where(a => a.Id == empresaId);
 
             return query.ToList();
         }

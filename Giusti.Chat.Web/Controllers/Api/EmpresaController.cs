@@ -29,14 +29,16 @@ namespace Giusti.Chat.Web.Controllers.Api
             try
             {
                 VerificaAutenticacao(Constantes.FuncionalidadeEmpresaConsulta, Constantes.FuncionalidadeNomeEmpresaConsulta, biz);
+                bool acessoEmpresaConsultaTodas = VerificaAutenticacaoUnica(Constantes.FuncionalidadeEmpresaConsultaTodas, Constantes.FuncionalidadeNomeEmpresaConsultaTodas, biz);
 
                 //API
-                ResultadoBusca = new List<Empresa>(biz.RetornaEmpresas());
+                if(acessoEmpresaConsultaTodas)
+                    ResultadoBusca = new List<Empresa>(biz.RetornaEmpresas());
+                else
+                    ResultadoBusca = new List<Empresa>(biz.RetornaEmpresas(RetornaEmpresaIdAutenticado()));
 
                 if (!biz.IsValid())
                     throw new InvalidDataException();
-
-                ResultadoBusca.ForEach(a => a.SenhaUsuarioAdm = null);
             }
             catch (InvalidDataException)
             {
@@ -65,15 +67,16 @@ namespace Giusti.Chat.Web.Controllers.Api
             try
             {
                 VerificaAutenticacao(Constantes.FuncionalidadeEmpresaConsulta, Constantes.FuncionalidadeNomeEmpresaConsulta, biz);
+                bool acessoEmpresaConsultaTodas = VerificaAutenticacaoUnica(Constantes.FuncionalidadeEmpresaConsultaTodas, Constantes.FuncionalidadeNomeEmpresaConsultaTodas, biz);
 
                 //API
-                ResultadoBusca = biz.RetornaEmpresa_Id(id);
+                if(acessoEmpresaConsultaTodas)
+                    ResultadoBusca = biz.RetornaEmpresa_Id(id);
+                else
+                    ResultadoBusca = biz.RetornaEmpresa_Id(id, RetornaEmpresaIdAutenticado());
 
                 if (!biz.IsValid())
                     throw new InvalidDataException();
-
-                if (ResultadoBusca != null)
-                    ResultadoBusca.SenhaUsuarioAdm = null;
             }
             catch (InvalidDataException)
             {
@@ -106,12 +109,6 @@ namespace Giusti.Chat.Web.Controllers.Api
                 biz.SalvaEmpresa(itemSalvar);
                 if (!biz.IsValid())
                     throw new InvalidDataException();
-
-                if (itemSalvar != null)
-                {
-                    itemSalvar.SenhaUsuarioAdm = null;
-                    itemSalvar.SenhaUsuarioAdmConfirmacao = null;
-                }
 
                 GravaLog(Constantes.FuncionalidadeNomeEmpresaInclusao, RetornaEmailAutenticado(), itemSalvar.Id);
             }
@@ -149,12 +146,6 @@ namespace Giusti.Chat.Web.Controllers.Api
 
                 if (!biz.IsValid())
                     throw new InvalidDataException();
-
-                if (itemSalvar != null)
-                {
-                    itemSalvar.SenhaUsuarioAdm = null;
-                    itemSalvar.SenhaUsuarioAdmConfirmacao = null;
-                }
 
                 GravaLog(Constantes.FuncionalidadeNomeEmpresaEdicao, RetornaEmailAutenticado(), itemSalvar.Id);
             }

@@ -29,9 +29,13 @@ namespace Giusti.Chat.Web.Controllers.Api
             try
             {
                 VerificaAutenticacao(Constantes.FuncionalidadeLogConsulta, Constantes.FuncionalidadeNomeLogConsulta, biz);
+                bool acessoEmpresaConsultaTodas = VerificaAutenticacaoUnica(Constantes.FuncionalidadeEmpresaConsultaTodas, Constantes.FuncionalidadeNomeEmpresaConsultaTodas, biz);
 
                 //API
-                ResultadoBusca = new List<Log>(biz.RetornaLogs());
+                if(acessoEmpresaConsultaTodas)
+                    ResultadoBusca = new List<Log>(biz.RetornaLogs());
+                else
+                    ResultadoBusca = new List<Log>(biz.RetornaLogs(RetornaEmpresaIdAutenticado()));
 
                 if (!biz.IsValid())
                     throw new InvalidDataException();

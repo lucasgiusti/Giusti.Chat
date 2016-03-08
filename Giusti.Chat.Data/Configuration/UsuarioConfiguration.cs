@@ -19,6 +19,7 @@ namespace Giusti.Chat.Data.Configuration
             this.Property(i => i.Email).HasColumnName("Email");
             this.Property(i => i.Senha).HasColumnName("Senha");
             this.Property(i => i.Ativo).HasColumnName("Ativo");
+            this.HasRequired(i => i.Empresa).WithMany().HasForeignKey(d => d.EmpresaId);
             this.Property(i => i.DataInclusao).HasColumnName("DataInclusao");
             this.Property(i => i.DataAlteracao).HasColumnName("DataAlteracao");
             this.Ignore(i => i.NovaSenha);

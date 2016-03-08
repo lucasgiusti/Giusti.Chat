@@ -16,13 +16,9 @@ namespace Giusti.Chat.Data.Configuration
             this.HasKey(i => new { i.Id });
             this.Property(i => i.Id).HasColumnName("Id");
             this.Property(i => i.Nome).HasColumnName("Nome");
-            this.Property(i => i.EmailUsuarioAdm).HasColumnName("EmailUsuarioAdm");
-            this.Property(i => i.SenhaUsuarioAdm).HasColumnName("SenhaUsuarioAdm");
             this.Property(i => i.Ativo).HasColumnName("Ativo");
             this.Property(i => i.DataInclusao).HasColumnName("DataInclusao");
             this.Property(i => i.DataAlteracao).HasColumnName("DataAlteracao");
-            this.Ignore(i => i.NovaSenhaUsuarioAdm);
-            this.Ignore(i => i.SenhaUsuarioAdmConfirmacao);
         }
     }
 }

@@ -39,6 +39,21 @@ namespace Giusti.Chat.Business
             return RetornoAcao;
         }
 
+        public IList<Perfil> RetornaPerfis_SemMaster()
+        {
+            LimpaValidacao();
+            IList<Perfil> RetornoAcao = new List<Perfil>();
+            if (IsValid())
+            {
+                using (PerfilData data = new PerfilData())
+                {
+                    RetornoAcao = data.RetornaPerfis_SemMaster();
+                }
+            }
+
+            return RetornoAcao;
+        }
+
         public void SalvaPerfil(Perfil itemGravar)
         {
             LimpaValidacao();

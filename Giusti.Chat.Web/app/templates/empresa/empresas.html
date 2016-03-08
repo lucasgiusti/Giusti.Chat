@@ -19,7 +19,6 @@
                             <th style="width: 1%"></th>
                             <th style="width: 1%">Id</th>
                             <th>Nome</th>
-                            <th style="width: 20%">Email Usuário Adm</th>
                             <th style="width: 1%">Ativo</th>
                         </tr>
                     </thead>
@@ -29,7 +28,6 @@
                             <td><a href="" ng-click="openModalDelete(empresa)">Excluir</a></td>
                             <td>{{empresa.id}}</td>
                             <td><a href="empresa/{{empresa.id}}">{{empresa.nome}}</a></td>
-                            <td>{{empresa.emailUsuarioAdm}}</td>
                             <td>{{empresa.ativo | SimNao}}</td>
                         </tr>
                     </tbody>

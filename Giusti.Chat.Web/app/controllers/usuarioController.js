@@ -5,11 +5,13 @@ app.controller('usuarioController', function ($scope, $http, $window, toasterAle
     var mensagemSalvo = JSON.stringify({ Success: "info", Messages: [{ Message: 'Usuário salvo com sucesso' }] });
     var url = 'api/usuario';
     var urlPerfil = 'api/perfil';
+    var urlEmpresa = 'api/empresa';
     var headerAuth = { headers: { 'Authorization': 'Basic ' + UserService.getUser().token } };
 
     $scope.heading = 'Usuários';
     $scope.usuarios = [];
     $scope.usuario = null;
+    $scope.empresas = [];
 
     //APIs
     $scope.getUsuarios = function () {
@@ -40,8 +42,8 @@ app.controller('usuarioController', function ($scope, $http, $window, toasterAle
 
         $http.post(url, JSON.stringify($scope.usuario), headerAuth).success(function (id) {
             $scope.id = id;
-            $scope.getUsuario();
             toasterAlert.showAlert(mensagemSalvo);
+            $location.path('usuario/' + id + '/edit');
         }).error(function (jqxhr, textStatus) {
             toasterAlert.showAlert(jqxhr.message);
         });
@@ -90,10 +92,20 @@ app.controller('usuarioController', function ($scope, $http, $window, toasterAle
         })
     }
 
+    $scope.getEmpresas = function () {
+
+        $http.get(urlEmpresa, headerAuth).success(function (data) {
+            $scope.empresas = data;
+        }).error(function (jqxhr, textStatus) {
+            toasterAlert.showAlert(jqxhr.message);
+        })
+    };
+
     //Utils
     $scope.addUsuario = function () {
-        $scope.usuario = { ativo: 1 };
+        $scope.usuario = { ativo: true };
         $scope.getPerfis();
+        $scope.getEmpresas();
     };
 
     $scope.openModalDelete = function (usuario) {

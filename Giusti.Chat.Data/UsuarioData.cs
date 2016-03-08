@@ -10,10 +10,24 @@ namespace Giusti.Chat.Data
     {
         public Usuario RetornaUsuario_Id(int id)
         {
-            IQueryable<Usuario> query = Context.Usuarios.Include("Perfis");
+            IQueryable<Usuario> query = Context.Usuarios.Include("Perfis").Include("Empresa");
 
             query = query.Where(d => d.Id == id);
             return query.FirstOrDefault();
+        }
+        public Usuario RetornaUsuario_Id(int id, int? empresaId)
+        {
+            IQueryable<Usuario> query = Context.Usuarios.Include("Perfis").Include("Empresa");
+
+            query = query.Where(d => d.Id == id && d.EmpresaId == empresaId);
+            return query.FirstOrDefault();
+        }
+        public bool ExisteLog_UsuarioId(int usuarioId)
+        {
+            IQueryable<Log> query = Context.Logs;
+
+            query = query.Where(d => d.UsuarioId == usuarioId);
+            return query.Any();
         }
         public Usuario RetornaUsuario_Email(string email)
         {
@@ -25,7 +39,15 @@ namespace Giusti.Chat.Data
         }
         public IList<Usuario> RetornaUsuarios()
         {
-            IQueryable<Usuario> query = Context.Usuarios;
+            IQueryable<Usuario> query = Context.Usuarios.Include("Empresa");
+
+            return query.ToList();
+        }
+        public IList<Usuario> RetornaUsuarios(int? empresaId)
+        {
+            IQueryable<Usuario> query = Context.Usuarios.Include("Empresa");
+
+            query = query.Where(a => a.EmpresaId == empresaId);
 
             return query.ToList();
         }

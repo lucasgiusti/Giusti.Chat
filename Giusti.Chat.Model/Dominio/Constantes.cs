@@ -9,6 +9,7 @@ namespace Giusti.Chat.Model.Dominio
     public static class Constantes
     {
         public static readonly int PerfilMasterId = 1;
+        public static readonly int EmpresaMasterId = 1;
 
         public static string AssuntoEmailEsqueciSenha = "Giusti.Chat - Nova Senha de Acesso";
         public static string CorpoEmailEsqueciSenha = "Olá <b>{0}</b>,<br /><br />Você solicitou uma nova senha de acesso ao sistema.<br /><br />A sua nova senha é: <b>{1}</b><br /><br /><br />Giusti.Chat";
@@ -76,5 +77,8 @@ namespace Giusti.Chat.Model.Dominio
         public static readonly string FuncionalidadeNomeAreaEdicao = "Área Edição";
         public static readonly string FuncionalidadeNomeAreaInclusao = "Área Inclusão";
         public static readonly string FuncionalidadeNomeAreaExclusao = "Área Exclusão";
+
+        public static readonly string FuncionalidadeEmpresaConsultaTodas = "28";
+        public static readonly string FuncionalidadeNomeEmpresaConsultaTodas = "Empresa Consulta Todas";
     }
 }

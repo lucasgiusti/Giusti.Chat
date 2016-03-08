@@ -3,6 +3,7 @@ using System.Linq;
 using System.Data;
 using Giusti.Chat.Model;
 using Giusti.Chat.Data.Library;
+using Giusti.Chat.Model.Dominio;
 
 namespace Giusti.Chat.Data
 {
@@ -18,6 +19,12 @@ namespace Giusti.Chat.Data
         public IList<Perfil> RetornaPerfis()
         {
             IQueryable<Perfil> query = Context.Perfis;
+
+            return query.ToList();
+        }
+        public IList<Perfil> RetornaPerfis_SemMaster()
+        {
+            IQueryable<Perfil> query = Context.Perfis.Where(a => a.Id != Constantes.PerfilMasterId);
 
             return query.ToList();
         }

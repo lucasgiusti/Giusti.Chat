@@ -11,16 +11,15 @@ namespace Giusti.Chat.Data
     {
         public IList<Log> RetornaLogs()
         {
-            IQueryable<Log> query = Context.Logs.Include("Usuario").OrderByDescending(a => a.Id);
+            IQueryable<Log> query = Context.Logs.Include("Usuario").Include("Usuario.Empresa").OrderByDescending(a => a.Id);
 
             return query.ToList();
         }
-        public bool ExisteLog_UsuarioId(int usuarioId)
+        public IList<Log> RetornaLogs(int? empresaId)
         {
-            IQueryable<Log> query = Context.Logs;
+            IQueryable<Log> query = Context.Logs.Include("Usuario").Include("Usuario.Empresa").Where(a => a.Usuario.EmpresaId == empresaId).OrderByDescending(a => a.Id);
 
-            query = query.Where(d => d.UsuarioId == usuarioId);
-            return query.Any();
+            return query.ToList();
         }
 
         public void SalvaLog(Log itemGravar)

@@ -7,7 +7,7 @@
     <ProductVersion>
     </ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{0F38E6A2-061C-4488-BBBA-CC2B8F3AD8D0}</ProjectGuid>
+    <ProjectGuid>{C4390A4B-7D2A-46C4-8302-4EB26379083B}</ProjectGuid>
     <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
@@ -1000,11 +1000,11 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Giusti.Chat.Business\Giusti.Chat.Business.csproj">
-      <Project>{0ca64f44-c882-4bfe-bf58-6e499ae9fbcd}</Project>
+      <Project>{4b802a0d-4da8-4bee-8733-85a1395c2e46}</Project>
       <Name>Giusti.Chat.Business</Name>
     </ProjectReference>
     <ProjectReference Include="..\Giusti.Chat.Model\Giusti.Chat.Model.csproj">
-      <Project>{11e0e190-4edb-4487-9d4f-6e015ee95ea8}</Project>
+      <Project>{56c4336c-fe38-42fd-acef-683234cfb5c1}</Project>
       <Name>Giusti.Chat.Model</Name>
     </ProjectReference>
   </ItemGroup>

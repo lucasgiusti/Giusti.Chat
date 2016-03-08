@@ -37,8 +37,8 @@
 
         $http.post(url, JSON.stringify($scope.empresa), headerAuth).success(function (id) {
             $scope.id = id;
-            $scope.getEmpresa();
             toasterAlert.showAlert(mensagemSalvo);
+            $location.path('empresa/' + id + '/edit');
         }).error(function (jqxhr, textStatus) {
             toasterAlert.showAlert(jqxhr.message);
         });
@@ -66,7 +66,7 @@
 
     //Utils
     $scope.addEmpresa = function () {
-        $scope.empresa = { ativo: 1 };
+        $scope.empresa = { ativo: true };
     };
 
     $scope.openModalDelete = function (empresa) {

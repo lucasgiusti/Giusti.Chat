@@ -29,9 +29,13 @@ namespace Giusti.Chat.Web.Controllers.Api
             try
             {
                 VerificaAutenticacao(Constantes.FuncionalidadeUsuarioConsulta, Constantes.FuncionalidadeNomeUsuarioConsulta, biz);
+                bool acessoEmpresaConsultaTodas = VerificaAutenticacaoUnica(Constantes.FuncionalidadeEmpresaConsultaTodas, Constantes.FuncionalidadeNomeEmpresaConsultaTodas, biz);
 
                 //API
-                ResultadoBusca = new List<Usuario>(biz.RetornaUsuarios());
+                if(acessoEmpresaConsultaTodas)
+                    ResultadoBusca = new List<Usuario>(biz.RetornaUsuarios());
+                else
+                    ResultadoBusca = new List<Usuario>(biz.RetornaUsuarios(RetornaEmpresaIdAutenticado()));
 
                 if (!biz.IsValid())
                     throw new InvalidDataException();
@@ -65,9 +69,13 @@ namespace Giusti.Chat.Web.Controllers.Api
             try
             {
                 VerificaAutenticacao(Constantes.FuncionalidadeUsuarioConsulta, Constantes.FuncionalidadeNomeUsuarioConsulta, biz);
-                
+                bool acessoEmpresaConsultaTodas = VerificaAutenticacaoUnica(Constantes.FuncionalidadeEmpresaConsultaTodas, Constantes.FuncionalidadeNomeEmpresaConsultaTodas, biz);
+
                 //API
-                ResultadoBusca = biz.RetornaUsuario_Id(id);
+                if(acessoEmpresaConsultaTodas)
+                    ResultadoBusca = biz.RetornaUsuario_Id(id);
+                else
+                    ResultadoBusca = biz.RetornaUsuario_Id(id, RetornaEmpresaIdAutenticado());
 
                 if (!biz.IsValid())
                     throw new InvalidDataException();

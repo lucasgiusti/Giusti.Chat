@@ -26,6 +26,20 @@ namespace Giusti.Chat.Business
 
             return RetornoAcao;
         }
+        public Usuario RetornaUsuario_Id(int id, int? empresaId)
+        {
+            LimpaValidacao();
+            Usuario RetornoAcao = null;
+            if (IsValid())
+            {
+                using (UsuarioData data = new UsuarioData())
+                {
+                    RetornoAcao = data.RetornaUsuario_Id(id, empresaId);
+                }
+            }
+
+            return RetornoAcao;
+        }
         public Usuario RetornaUsuario_Email(string email)
         {
             LimpaValidacao();
@@ -40,6 +54,20 @@ namespace Giusti.Chat.Business
 
             return RetornoAcao;
         }
+        public bool ExisteLog_UsuarioId(int usuarioId)
+        {
+            LimpaValidacao();
+            bool RetornoAcao = false;
+            if (IsValid())
+            {
+                using (UsuarioData data = new UsuarioData())
+                {
+                    RetornoAcao = data.ExisteLog_UsuarioId(usuarioId);
+                }
+            }
+
+            return RetornoAcao;
+        }
         public IList<Usuario> RetornaUsuarios()
         {
             LimpaValidacao();
@@ -49,6 +77,20 @@ namespace Giusti.Chat.Business
                 using (UsuarioData data = new UsuarioData())
                 {
                     RetornoAcao = data.RetornaUsuarios();
+                }
+            }
+
+            return RetornoAcao;
+        }
+        public IList<Usuario> RetornaUsuarios(int? empresaId)
+        {
+            LimpaValidacao();
+            IList<Usuario> RetornoAcao = new List<Usuario>();
+            if (IsValid())
+            {
+                using (UsuarioData data = new UsuarioData())
+                {
+                    RetornoAcao = data.RetornaUsuarios(empresaId);
                 }
             }
 
@@ -87,8 +129,12 @@ namespace Giusti.Chat.Business
 
                     PerfilUsuarioBusiness bizPerfilUsuario = new PerfilUsuarioBusiness();
                     IList<string> listFuncionalidade = bizPerfilUsuario.RetornaFuncionalidades_UsuarioId((int)itemBase.Id);
+                    string funcionalidades = string.Empty;
 
-                    retorno.Token = GeraToken(email, string.Join(",", listFuncionalidade));
+                    if (listFuncionalidade.Count > 0)
+                        funcionalidades = string.Join(",", listFuncionalidade);
+
+                    retorno.Token = GeraToken(email, funcionalidades);
                 }
 
             }
@@ -168,6 +214,9 @@ namespace Giusti.Chat.Business
 
         public void ValidaRegrasSalvar(Usuario itemGravar)
         {
+            if (IsValid() && itemGravar.Empresa == null)
+                IncluiErroBusiness("Usuario_Empresa");
+
             if (IsValid() && string.IsNullOrWhiteSpace(itemGravar.Nome))
                 IncluiErroBusiness("Usuario_Nome");
 
@@ -227,7 +276,8 @@ namespace Giusti.Chat.Business
                         itemGravar.Senha = PasswordHash.HashPassword(itemGravar.Senha);
                 }
             }
-
+            if (IsValid())
+                itemGravar.EmpresaId = itemGravar.Empresa.Id;
 
         }
         public void ValidaRegrasExcluir(Usuario itemGravar)
@@ -246,8 +296,7 @@ namespace Giusti.Chat.Business
 
             if (IsValid())
             {
-                LogBusiness biz = new LogBusiness();
-                if (biz.ExisteLog_UsuarioId((int)itemGravar.Id))
+                if (ExisteLog_UsuarioId((int)itemGravar.Id))
                     IncluiErroBusiness("Usuario_CadastroUtilizado");
             }
 

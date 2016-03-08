@@ -84,6 +84,11 @@ namespace Giusti.Chat.Web.Library
             if (!biz.IsValid())
                 throw new UnauthorizedAccessException();
         }
+        protected bool VerificaAutenticacaoUnica(string codigoFuncionalidade, string funcionalidade, BusinessBase biz)
+        {
+            biz.VerificaAutenticacao(RetornaToken(), codigoFuncionalidade, funcionalidade);
+            return biz.IsValid();
+        }
         protected string RetornaToken()
         {
             string token = string.Empty;
@@ -105,6 +110,20 @@ namespace Giusti.Chat.Web.Library
 
             return RetornaTokenDescriptografado(token).Name;
         }
+        public int? RetornaEmpresaIdAutenticado()
+        {
+            string email = RetornaEmailAutenticado();
+
+            int? empresaId = null;
+            if (!string.IsNullOrWhiteSpace(email))
+            {
+                UsuarioBusiness biz = new UsuarioBusiness();
+                Usuario usuario = biz.RetornaUsuario_Email(email);
+                empresaId = usuario.EmpresaId;
+            }
+            return empresaId;
+
+        }
         protected string[] RetornaFuncionalidadesUsuario()
         {
             string token = RetornaToken();
@@ -114,7 +133,10 @@ namespace Giusti.Chat.Web.Library
             FormsAuthenticationTicket cookie = FormsAuthentication.Decrypt(token);
 
             string userData = cookie.UserData;
-            string[] roles = userData.Split(',');
+            string[] roles = null;
+
+            if(!string.IsNullOrEmpty(userData))
+                roles = userData.Split(',');
 
             return roles;
         }

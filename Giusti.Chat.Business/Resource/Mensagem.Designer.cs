@@ -142,29 +142,11 @@ namespace Giusti.Chat.Business.Resource {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Já existe uma empresa com o email usuário adm informado.
+        ///   Looks up a localized string similar to A empresa não pode ser excluída pois está associada outro registro.
         /// </summary>
-        internal static string Empresa_CadastroDuplicado {
+        internal static string Empresa_CadastroUtilizado {
             get {
-                return ResourceManager.GetString("Empresa_CadastroDuplicado", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to O campo email usuário adm é obrigatório.
-        /// </summary>
-        internal static string Empresa_EmailUsuarioAdm {
-            get {
-                return ResourceManager.GetString("Empresa_EmailUsuarioAdm", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Email inválido.
-        /// </summary>
-        internal static string Empresa_EmailUsuarioAdmInvalido {
-            get {
-                return ResourceManager.GetString("Empresa_EmailUsuarioAdmInvalido", resourceCulture);
+                return ResourceManager.GetString("Empresa_CadastroUtilizado", resourceCulture);
             }
         }
         
@@ -196,15 +178,6 @@ namespace Giusti.Chat.Business.Resource {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Nova senha gerada com sucesso.
-        /// </summary>
-        internal static string Empresa_NovaSenhaGeradaOK {
-            get {
-                return ResourceManager.GetString("Empresa_NovaSenhaGeradaOK", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Empresa salva com sucesso.
         /// </summary>
         internal static string Empresa_SalvaEmpresaOK {
@@ -214,38 +187,11 @@ namespace Giusti.Chat.Business.Resource {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Senha inválida.
+        ///   Looks up a localized string similar to A empresa não pode ser editada nem excluída.
         /// </summary>
-        internal static string Empresa_SenhaInvalida {
+        internal static string Empresa_SemPermissaoEdicaoExclusao {
             get {
-                return ResourceManager.GetString("Empresa_SenhaInvalida", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to O campo senha usuário adm é obrigatório.
-        /// </summary>
-        internal static string Empresa_SenhaUsuarioAdm {
-            get {
-                return ResourceManager.GetString("Empresa_SenhaUsuarioAdm", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to O campo confirmação de senha é obrigatório.
-        /// </summary>
-        internal static string Empresa_SenhaUsuarioAdmConfirmacao {
-            get {
-                return ResourceManager.GetString("Empresa_SenhaUsuarioAdmConfirmacao", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to O campo confirmação de senha é inválido.
-        /// </summary>
-        internal static string Empresa_SenhaUsuarioAdmConfirmacao_Incorreta {
-            get {
-                return ResourceManager.GetString("Empresa_SenhaUsuarioAdmConfirmacao_Incorreta", resourceCulture);
+                return ResourceManager.GetString("Empresa_SemPermissaoEdicaoExclusao", resourceCulture);
             }
         }
         
@@ -507,6 +453,15 @@ namespace Giusti.Chat.Business.Resource {
         internal static string Usuario_EmailInvalido {
             get {
                 return ResourceManager.GetString("Usuario_EmailInvalido", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to O campo empresa é obrigatório.
+        /// </summary>
+        internal static string Usuario_Empresa {
+            get {
+                return ResourceManager.GetString("Usuario_Empresa", resourceCulture);
             }
         }
         

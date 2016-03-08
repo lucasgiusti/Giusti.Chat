@@ -26,7 +26,7 @@ namespace Giusti.Chat.Business
 
             return RetornoAcao;
         }
-        public Empresa RetornaEmpresa_EmailUsuarioAdm(string emailUsuarioAdm)
+        public Empresa RetornaEmpresa_Id(int id, int? empresaId)
         {
             LimpaValidacao();
             Empresa RetornoAcao = null;
@@ -34,7 +34,35 @@ namespace Giusti.Chat.Business
             {
                 using (EmpresaData data = new EmpresaData())
                 {
-                    RetornoAcao = data.RetornaEmpresa_EmailUsuarioAdm(emailUsuarioAdm);
+                    RetornoAcao = data.RetornaEmpresa_Id(id, empresaId);
+                }
+            }
+
+            return RetornoAcao;
+        }
+        public bool ExisteUsuario_EmpresaId(int empresaId)
+        {
+            LimpaValidacao();
+            bool RetornoAcao = false;
+            if (IsValid())
+            {
+                using (EmpresaData data = new EmpresaData())
+                {
+                    RetornoAcao = data.ExisteUsuario_EmpresaId(empresaId);
+                }
+            }
+
+            return RetornoAcao;
+        }
+        public bool ExisteArea_EmpresaId(int empresaId)
+        {
+            LimpaValidacao();
+            bool RetornoAcao = false;
+            if (IsValid())
+            {
+                using (EmpresaData data = new EmpresaData())
+                {
+                    RetornoAcao = data.ExisteArea_EmpresaId(empresaId);
                 }
             }
 
@@ -54,53 +82,21 @@ namespace Giusti.Chat.Business
 
             return RetornoAcao;
         }
-
-        public UsuarioLogado EfetuaLoginSistema(string email, string senha, string ip, string nomeMaquina)
+        public IList<Empresa> RetornaEmpresas(int? empresaId)
         {
             LimpaValidacao();
-            if (string.IsNullOrEmpty(email))
-                IncluiErroBusiness("Usuario_Email");
-
-            if (string.IsNullOrEmpty(senha))
-                IncluiErroBusiness("Usuario_Senha");
-
-            UsuarioLogado retorno = null;
+            IList<Empresa> RetornoAcao = new List<Empresa>();
             if (IsValid())
             {
-                EmpresaBusiness bizEmpresa = new EmpresaBusiness();
-                Empresa itemBase = bizEmpresa.RetornaEmpresa_EmailUsuarioAdm(email);
-
-                if (itemBase == null)
-                    IncluiErroBusiness("Usuario_EmailInvalido");
-
-                if (IsValid() && !PasswordHash.ValidatePassword(senha, itemBase.SenhaUsuarioAdm))
-                    IncluiErroBusiness("Usuario_SenhaInvalida");
-
-                if (IsValid())
+                using (EmpresaData data = new EmpresaData())
                 {
-                    retorno = new UsuarioLogado();
-                    retorno.Id = itemBase.Id.Value;
-                    retorno.DataHoraAcesso = DateTime.Now;
-                    retorno.Email = itemBase.EmailUsuarioAdm;
-                    retorno.Nome = itemBase.Nome;
-                    retorno.WorkstationId = nomeMaquina;
-
-                    PerfilUsuarioBusiness bizPerfilUsuario = new PerfilUsuarioBusiness();
-                    IList<string> listFuncionalidade = bizPerfilUsuario.RetornaFuncionalidades_UsuarioId((int)itemBase.Id);
-
-                    UsuarioBusiness bizUsuario = new UsuarioBusiness();
-                    retorno.Token = bizUsuario.GeraToken(email, string.Join(",", new List<string>() {
-                        Constantes.FuncionalidadeAlterarSenha,
-                        Constantes.FuncionalidadeArea,
-                        Constantes.FuncionalidadeAreaConsulta,
-                        Constantes.FuncionalidadeAreaEdicao,
-                        Constantes.FuncionalidadeAreaInclusao,
-                        Constantes.FuncionalidadeAreaExclusao }));
+                    RetornoAcao = data.RetornaEmpresas(empresaId);
                 }
-
             }
-            return retorno;
+
+            return RetornoAcao;
         }
+
         public void SalvaEmpresa(Empresa itemGravar)
         {
             LimpaValidacao();
@@ -129,64 +125,11 @@ namespace Giusti.Chat.Business
                 }
             }
         }
-        public void AlteraSenha(Empresa itemGravar)
-        {
-            LimpaValidacao();
-            ValidaRegrasAlterarSenha(ref itemGravar);
-            if (IsValid())
-            {
-                ValidateService(itemGravar);
-                ValidaRegrasSalvar(itemGravar);
-                if (IsValid())
-                {
-                    using (EmpresaData data = new EmpresaData())
-                    {
-                        data.SalvaEmpresa(itemGravar);
-                        IncluiSucessoBusiness("Usuario_SenhaAlteradaOK");
-                    }
-                }
-            }
-        }
-        public void GeraNovaSenha(Empresa itemGravar)
-        {
-            LimpaValidacao();
-            ValidaRegrasGerarNovaSenha(ref itemGravar);
-            if (IsValid())
-            {
-                string novaSenha = string.Empty;
-                novaSenha = PasswordHash.GenerateRandomPassword();
-                itemGravar.SenhaUsuarioAdm = novaSenha;
-                itemGravar.SenhaUsuarioAdmConfirmacao = novaSenha;
-
-                ValidateService(itemGravar);
-                ValidaRegrasSalvar(itemGravar);
-                if (IsValid())
-                {
-                    using (EmpresaData data = new EmpresaData())
-                    {
-                        data.SalvaEmpresa(itemGravar);
-                        IncluiSucessoBusiness("Empresa_NovaSenhaGeradaOK");
-
-                        GeraEmailEsqueciSenha(itemGravar, novaSenha);
-                    }
-                }
-            }
-        }
-
+        
         public void ValidaRegrasSalvar(Empresa itemGravar)
         {
             if (IsValid() && string.IsNullOrWhiteSpace(itemGravar.Nome))
                 IncluiErroBusiness("Empresa_Nome");
-
-            if (IsValid() && string.IsNullOrWhiteSpace(itemGravar.EmailUsuarioAdm))
-                IncluiErroBusiness("Empresa_EmailUsuarioAdm");
-
-            if (IsValid())
-            {
-                Empresa itemBase = RetornaEmpresa_EmailUsuarioAdm(itemGravar.EmailUsuarioAdm);
-                if (itemBase != null && itemGravar.Id != itemBase.Id)
-                    IncluiErroBusiness("Empresa_CadastroDuplicado");
-            }
 
             if (IsValid())
             {
@@ -198,113 +141,39 @@ namespace Giusti.Chat.Business
                     {
                         itemGravar.DataInclusao = itemBase.DataInclusao;
                         itemGravar.DataAlteracao = DateTime.Now;
-
-                        if (string.IsNullOrWhiteSpace(itemGravar.SenhaUsuarioAdm) && string.IsNullOrWhiteSpace(itemGravar.SenhaUsuarioAdmConfirmacao))
-                            itemGravar.SenhaUsuarioAdm = itemBase.SenhaUsuarioAdm;
-                        else
-                        {
-                            if (string.IsNullOrWhiteSpace(itemGravar.SenhaUsuarioAdm))
-                                IncluiErroBusiness("Empresa_SenhaUsuarioAdm");
-
-                            if (IsValid() && string.IsNullOrWhiteSpace(itemGravar.SenhaUsuarioAdmConfirmacao))
-                                IncluiErroBusiness("Empresa_SenhaUsuarioAdmConfirmacao");
-
-                            if (IsValid() && !itemGravar.SenhaUsuarioAdm.Equals(itemGravar.SenhaUsuarioAdmConfirmacao))
-                                IncluiErroBusiness("Empresa_SenhaUsuarioAdmConfirmacao_Incorreta");
-
-                            if (IsValid())
-                                itemGravar.SenhaUsuarioAdm = PasswordHash.HashPassword(itemGravar.SenhaUsuarioAdm);
-                        }
                     }
                 }
                 else
                 {
                     itemGravar.DataInclusao = DateTime.Now;
                     itemGravar.Ativo = true;
-
-                    if (string.IsNullOrWhiteSpace(itemGravar.SenhaUsuarioAdm))
-                        IncluiErroBusiness("Empresa_SenhaUsuarioAdm");
-
-                    if (IsValid() && string.IsNullOrWhiteSpace(itemGravar.SenhaUsuarioAdmConfirmacao))
-                        IncluiErroBusiness("Empresa_SenhaUsuarioAdmConfirmacao");
-
-                    if (IsValid() && !itemGravar.SenhaUsuarioAdm.Equals(itemGravar.SenhaUsuarioAdmConfirmacao))
-                        IncluiErroBusiness("Empresa_SenhaUsuarioAdmConfirmacao_Incorreta");
-
-                    if (IsValid())
-                        itemGravar.SenhaUsuarioAdm = PasswordHash.HashPassword(itemGravar.SenhaUsuarioAdm);
                 }
             }
 
-
+            if (IsValid() && itemGravar.Id == (int)Constantes.EmpresaMasterId)
+                IncluiErroBusiness("Empresa_SemPermissaoEdicaoExclusao");
         }
         public void ValidaRegrasExcluir(Empresa itemGravar)
         {
             if (IsValid())
-                ValidaExistencia(itemGravar);
-
-
-        }
-        public void ValidaRegrasAlterarSenha(ref Empresa itemGravar)
-        {
-            LimpaValidacao();
-            if (string.IsNullOrEmpty(itemGravar.EmailUsuarioAdm))
-                IncluiErroBusiness("Usuario_Email");
-
-            if (string.IsNullOrEmpty(itemGravar.SenhaUsuarioAdm))
-                IncluiErroBusiness("Usuario_Senha");
-
-            if (string.IsNullOrEmpty(itemGravar.NovaSenhaUsuarioAdm))
-                IncluiErroBusiness("Usuario_NovaSenha");
-
-            if (string.IsNullOrEmpty(itemGravar.SenhaUsuarioAdmConfirmacao))
-                IncluiErroBusiness("Usuario_NovaSenhaConfirmacao");
-
-            if (IsValid())
             {
-                Empresa itemBase = RetornaEmpresa_EmailUsuarioAdm(itemGravar.EmailUsuarioAdm);
-
-                if (itemBase == null)
-                    IncluiErroBusiness("Usuario_EmailInvalido");
-
-                if (IsValid() && !PasswordHash.ValidatePassword(itemGravar.SenhaUsuarioAdm, itemBase.SenhaUsuarioAdm))
-                    IncluiErroBusiness("Usuario_SenhaInvalida");
-
-                if (IsValid())
-                {
-                    itemBase.SenhaUsuarioAdm = itemGravar.NovaSenhaUsuarioAdm;
-                    itemBase.SenhaUsuarioAdmConfirmacao = itemGravar.SenhaUsuarioAdmConfirmacao;
-                    itemGravar = itemBase;
-                }
+                Empresa itemBase = RetornaEmpresa_Id((int)itemGravar.Id);
+                ValidaExistencia(itemBase);
             }
-        }
-        public void ValidaRegrasGerarNovaSenha(ref Empresa itemGravar)
-        {
-            LimpaValidacao();
-            if (string.IsNullOrEmpty(itemGravar.EmailUsuarioAdm))
-                IncluiErroBusiness("Usuario_Email");
 
-            if (IsValid())
-            {
-                Empresa itemBase = RetornaEmpresa_EmailUsuarioAdm(itemGravar.EmailUsuarioAdm);
+            if (IsValid() && itemGravar.Id == (int)Constantes.EmpresaMasterId)
+                IncluiErroBusiness("Empresa_SemPermissaoEdicaoExclusao");
 
-                if (itemBase == null)
-                    IncluiErroBusiness("Usuario_EmailInvalido");
+            if (IsValid() && ExisteUsuario_EmpresaId((int)itemGravar.Id))
+                IncluiErroBusiness("Empresa_CadastroUtilizado");
 
-                if (IsValid())
-                    itemGravar = itemBase;
-            }
+            if (IsValid() && ExisteArea_EmpresaId((int)itemGravar.Id))
+                IncluiErroBusiness("Empresa_CadastroUtilizado");
         }
         public void ValidaExistencia(Empresa itemGravar)
         {
             if (itemGravar == null)
                 IncluiErroBusiness("Empresa_NaoEncontrada");
-        }
-
-        public void GeraEmailEsqueciSenha(Empresa itemGravar, string novaSenha)
-        {
-            EmailBusiness biz = new EmailBusiness();
-            biz.GeraEmailEsqueciSenha(itemGravar.Nome, itemGravar.EmailUsuarioAdm, novaSenha);
         }
     }
 }

@@ -8,13 +8,11 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Giusti.Chat.Data", "Giusti.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Giusti.Chat.Business", "Giusti.Chat.Business\Giusti.Chat.Business.csproj", "{0CA64F44-C882-4BFE-BF58-6E499AE9FBCD}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Giusti.Chat.Web", "Giusti.Chat.Web\Giusti.Chat.Web.csproj", "{0F38E6A2-061C-4488-BBBA-CC2B8F3AD8D0}"
+Project("{9092AA53-FB77-4645-B42D-1CCCA6BD08BD}") = "Giusti.Chat.Node", "Giusti.Chat.Node\Giusti.Chat.Node.njsproj", "{4EEE76A7-EA2A-47DC-9F5F-2B24347B868D}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Giusti.Chat.Service.Mail", "Giusti.Chat.Service.Mail\Giusti.Chat.Service.Mail.csproj", "{8F5A7876-4B92-4E12-AAC7-7262763B6DE9}"
 EndProject
-Project("{9092AA53-FB77-4645-B42D-1CCCA6BD08BD}") = "Giusti.Chat.Node", "Giusti.Chat.Node\Giusti.Chat.Node.njsproj", "{4EEE76A7-EA2A-47DC-9F5F-2B24347B868D}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Giusti.Chat.Web.Adm", "Giusti.Chat.Web.Adm\Giusti.Chat.Web.Adm.csproj", "{2A5CCF46-12C0-4546-8306-D22448A3CF85}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Giusti.Chat.Web", "Giusti.Chat.Web\Giusti.Chat.Web.csproj", "{C4390A4B-7D2A-46C4-8302-4EB26379083B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -34,22 +32,18 @@ Global
 		{0CA64F44-C882-4BFE-BF58-6E499AE9FBCD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0CA64F44-C882-4BFE-BF58-6E499AE9FBCD}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0CA64F44-C882-4BFE-BF58-6E499AE9FBCD}.Release|Any CPU.Build.0 = Release|Any CPU
-		{0F38E6A2-061C-4488-BBBA-CC2B8F3AD8D0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{0F38E6A2-061C-4488-BBBA-CC2B8F3AD8D0}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{0F38E6A2-061C-4488-BBBA-CC2B8F3AD8D0}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{0F38E6A2-061C-4488-BBBA-CC2B8F3AD8D0}.Release|Any CPU.Build.0 = Release|Any CPU
-		{8F5A7876-4B92-4E12-AAC7-7262763B6DE9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{8F5A7876-4B92-4E12-AAC7-7262763B6DE9}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{8F5A7876-4B92-4E12-AAC7-7262763B6DE9}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{8F5A7876-4B92-4E12-AAC7-7262763B6DE9}.Release|Any CPU.Build.0 = Release|Any CPU
 		{4EEE76A7-EA2A-47DC-9F5F-2B24347B868D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{4EEE76A7-EA2A-47DC-9F5F-2B24347B868D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4EEE76A7-EA2A-47DC-9F5F-2B24347B868D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4EEE76A7-EA2A-47DC-9F5F-2B24347B868D}.Release|Any CPU.Build.0 = Release|Any CPU
-		{2A5CCF46-12C0-4546-8306-D22448A3CF85}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{2A5CCF46-12C0-4546-8306-D22448A3CF85}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{2A5CCF46-12C0-4546-8306-D22448A3CF85}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{2A5CCF46-12C0-4546-8306-D22448A3CF85}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8F5A7876-4B92-4E12-AAC7-7262763B6DE9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8F5A7876-4B92-4E12-AAC7-7262763B6DE9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8F5A7876-4B92-4E12-AAC7-7262763B6DE9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8F5A7876-4B92-4E12-AAC7-7262763B6DE9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C4390A4B-7D2A-46C4-8302-4EB26379083B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C4390A4B-7D2A-46C4-8302-4EB26379083B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C4390A4B-7D2A-46C4-8302-4EB26379083B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C4390A4B-7D2A-46C4-8302-4EB26379083B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -26,15 +26,15 @@ namespace Giusti.Chat.Business
 
             return RetornoAcao;
         }
-        public bool ExisteLog_UsuarioId(int id)
+        public IList<Log> RetornaLogs(int? empresaId)
         {
             LimpaValidacao();
-            bool RetornoAcao = false;
+            IList<Log> RetornoAcao = new List<Log>();
             if (IsValid())
             {
                 using (LogData data = new LogData())
                 {
-                    RetornoAcao = data.ExisteLog_UsuarioId(id);
+                    RetornoAcao = data.RetornaLogs(empresaId);
                 }
             }
 

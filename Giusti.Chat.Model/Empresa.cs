@@ -23,30 +23,6 @@ namespace Giusti.Chat.Model
                 results.AddResult(result);
             }
         }
-        public string EmailUsuarioAdm { get; set; }
-        [SelfValidation]
-        private void ValidaEmailUsuarioAdm(Microsoft.Practices.EnterpriseLibrary.Validation.ValidationResults results)
-        {
-            if (EmailUsuarioAdm != null && EmailUsuarioAdm.Length > 100)
-            {
-                Microsoft.Practices.EnterpriseLibrary.Validation.ValidationResult result =
-                      new Microsoft.Practices.EnterpriseLibrary.Validation.ValidationResult(Resource.Mensagem.Empresa_EmailUsuarioAdmTamanho, this, "Email", null, null);
-                results.AddResult(result);
-            }
-        }
-        public string SenhaUsuarioAdm { get; set; }
-        [SelfValidation]
-        private void ValidaSenhaUsuarioAdm(Microsoft.Practices.EnterpriseLibrary.Validation.ValidationResults results)
-        {
-            if (SenhaUsuarioAdm != null && SenhaUsuarioAdm.Length > 300)
-            {
-                Microsoft.Practices.EnterpriseLibrary.Validation.ValidationResult result =
-                      new Microsoft.Practices.EnterpriseLibrary.Validation.ValidationResult(Resource.Mensagem.Empresa_SenhaUsuarioAdmTamanho, this, "Senha", null, null);
-                results.AddResult(result);
-            }
-        }
-        public string NovaSenhaUsuarioAdm { get; set; }
-        public string SenhaUsuarioAdmConfirmacao { get; set; }
         public bool? Ativo { get; set; }
         public DateTime? DataInclusao { get; set; }
         public DateTime? DataAlteracao { get; set; }

@@ -13,6 +13,7 @@ namespace Giusti.Chat.Model
         }
 
         public int? Id { get; set; }
+        public int? EmpresaId { get; set; }
         public string Nome { get; set; }
         [SelfValidation]
         private void ValidaNome(Microsoft.Practices.EnterpriseLibrary.Validation.ValidationResults results)
@@ -51,6 +52,7 @@ namespace Giusti.Chat.Model
         public bool? Ativo { get; set; }
         public DateTime? DataInclusao { get; set; }
         public DateTime? DataAlteracao { get; set; }
+        public Empresa Empresa { get; set; }
         public IList<PerfilUsuario> Perfis { get; set; }
         public Usuario Clone()
         {

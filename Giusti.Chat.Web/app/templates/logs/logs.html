@@ -12,6 +12,7 @@
                         <tr>
                             <th width="1%">Registro</th>
                             <th>Ação</th>
+                            <th>Empresa</th>
                             <th>Usuário</th>
                             <th width="15%">Origem</th>
                             <th width="1%">Data</th>
@@ -21,6 +22,7 @@
                         <tr ng-repeat="log in logs | inicioPaginacao: (currentPage-1)*itemPerPage | limitTo: itemPerPage">
                             <td>{{log.registroId}}</td>
                             <td>{{log.acao}}</td>
+                            <td>{{log.usuario.empresa.nome}}</td>
                             <td>{{log.usuario.nome}}</td>
                             <td>{{log.origemAcesso}}</td>
                             <td>{{log.dataInclusao | date:'dd/MM/yyyy'}}</td>
