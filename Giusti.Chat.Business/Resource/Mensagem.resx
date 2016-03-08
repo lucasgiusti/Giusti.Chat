@@ -144,6 +144,33 @@
   <data name="Email_SalvaEmailOK" xml:space="preserve">
     <value>Email salvo com sucesso</value>
   </data>
+  <data name="EmpresaUsuario_Email" xml:space="preserve">
+    <value>O campo email é obrigatório</value>
+  </data>
+  <data name="EmpresaUsuario_EmailInvalido" xml:space="preserve">
+    <value>O campo email é inválido</value>
+  </data>
+  <data name="EmpresaUsuario_ExcluiEmpresaUsuarioOK" xml:space="preserve">
+    <value>EmpresaUsuario excluído com sucesso</value>
+  </data>
+  <data name="EmpresaUsuario_NaoEncontrado" xml:space="preserve">
+    <value>Usuário não encontrado</value>
+  </data>
+  <data name="EmpresaUsuario_NovaSenhaGeradaOK" xml:space="preserve">
+    <value>Nova senha gerada com sucesso</value>
+  </data>
+  <data name="EmpresaUsuario_SalvaEmpresaUsuarioOK" xml:space="preserve">
+    <value>EmpresaUsuario salvo com sucesso</value>
+  </data>
+  <data name="EmpresaUsuario_Senha" xml:space="preserve">
+    <value>O campo senha é obrigatório</value>
+  </data>
+  <data name="EmpresaUsuario_SenhaAlteradaOK" xml:space="preserve">
+    <value>Senha Alterada com sucesso</value>
+  </data>
+  <data name="EmpresaUsuario_SenhaInvalida" xml:space="preserve">
+    <value>O campo senha é inválido</value>
+  </data>
   <data name="Empresa_CadastroDuplicado" xml:space="preserve">
     <value>Já existe uma empresa com o email usuário adm informado</value>
   </data>
@@ -161,6 +188,9 @@
   </data>
   <data name="Empresa_Nome" xml:space="preserve">
     <value>O campo nome é obrigatório</value>
+  </data>
+  <data name="Empresa_NovaSenhaGeradaOK" xml:space="preserve">
+    <value>Nova senha gerada com sucesso</value>
   </data>
   <data name="Empresa_SalvaEmpresaOK" xml:space="preserve">
     <value>Empresa salva com sucesso</value>

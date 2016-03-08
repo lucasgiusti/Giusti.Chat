@@ -124,6 +124,33 @@ namespace Giusti.Chat.Model.Resource {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to O tamanho do campo email excedeu o limite.
+        /// </summary>
+        internal static string EmpresaUsuario_EmailTamanho {
+            get {
+                return ResourceManager.GetString("EmpresaUsuario_EmailTamanho", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to O tamanho do campo nome excedeu o limite.
+        /// </summary>
+        internal static string EmpresaUsuario_NomeTamanho {
+            get {
+                return ResourceManager.GetString("EmpresaUsuario_NomeTamanho", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to O tamanho do campo senha excedeu o limite.
+        /// </summary>
+        internal static string EmpresaUsuario_SenhaTamanho {
+            get {
+                return ResourceManager.GetString("EmpresaUsuario_SenhaTamanho", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to O tamanho do campo nome excedeu o limite.
         /// </summary>
         internal static string Perfil_NomeTamanho {

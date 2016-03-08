@@ -50,6 +50,7 @@
     <Compile Include="AreaBusiness.cs" />
     <Compile Include="EmailBusiness.cs" />
     <Compile Include="EmpresaBusiness.cs" />
+    <Compile Include="EmpresaUsuarioBusiness.cs" />
     <Compile Include="Library\PasswordHash.cs" />
     <Compile Include="LogBusiness.cs" />
     <Compile Include="PerfilBusiness.cs" />

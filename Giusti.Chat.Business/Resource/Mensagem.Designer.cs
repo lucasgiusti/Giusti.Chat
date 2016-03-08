@@ -196,6 +196,15 @@ namespace Giusti.Chat.Business.Resource {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Nova senha gerada com sucesso.
+        /// </summary>
+        internal static string Empresa_NovaSenhaGeradaOK {
+            get {
+                return ResourceManager.GetString("Empresa_NovaSenhaGeradaOK", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Empresa salva com sucesso.
         /// </summary>
         internal static string Empresa_SalvaEmpresaOK {
@@ -237,6 +246,87 @@ namespace Giusti.Chat.Business.Resource {
         internal static string Empresa_SenhaUsuarioAdmConfirmacao_Incorreta {
             get {
                 return ResourceManager.GetString("Empresa_SenhaUsuarioAdmConfirmacao_Incorreta", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to O campo email é obrigatório.
+        /// </summary>
+        internal static string EmpresaUsuario_Email {
+            get {
+                return ResourceManager.GetString("EmpresaUsuario_Email", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to O campo email é inválido.
+        /// </summary>
+        internal static string EmpresaUsuario_EmailInvalido {
+            get {
+                return ResourceManager.GetString("EmpresaUsuario_EmailInvalido", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to EmpresaUsuario excluído com sucesso.
+        /// </summary>
+        internal static string EmpresaUsuario_ExcluiEmpresaUsuarioOK {
+            get {
+                return ResourceManager.GetString("EmpresaUsuario_ExcluiEmpresaUsuarioOK", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Usuário não encontrado.
+        /// </summary>
+        internal static string EmpresaUsuario_NaoEncontrado {
+            get {
+                return ResourceManager.GetString("EmpresaUsuario_NaoEncontrado", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Nova senha gerada com sucesso.
+        /// </summary>
+        internal static string EmpresaUsuario_NovaSenhaGeradaOK {
+            get {
+                return ResourceManager.GetString("EmpresaUsuario_NovaSenhaGeradaOK", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to EmpresaUsuario salvo com sucesso.
+        /// </summary>
+        internal static string EmpresaUsuario_SalvaEmpresaUsuarioOK {
+            get {
+                return ResourceManager.GetString("EmpresaUsuario_SalvaEmpresaUsuarioOK", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to O campo senha é obrigatório.
+        /// </summary>
+        internal static string EmpresaUsuario_Senha {
+            get {
+                return ResourceManager.GetString("EmpresaUsuario_Senha", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Senha Alterada com sucesso.
+        /// </summary>
+        internal static string EmpresaUsuario_SenhaAlteradaOK {
+            get {
+                return ResourceManager.GetString("EmpresaUsuario_SenhaAlteradaOK", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to O campo senha é inválido.
+        /// </summary>
+        internal static string EmpresaUsuario_SenhaInvalida {
+            get {
+                return ResourceManager.GetString("EmpresaUsuario_SenhaInvalida", resourceCulture);
             }
         }
         

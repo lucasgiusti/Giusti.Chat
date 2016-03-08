@@ -54,9 +54,11 @@
     <Compile Include="Configuration\AreaConfiguration.cs" />
     <Compile Include="Configuration\EmailConfiguration.cs" />
     <Compile Include="Configuration\EmpresaConfiguration.cs" />
+    <Compile Include="Configuration\EmpresaUsuarioConfiguration.cs" />
     <Compile Include="Configuration\PerfilUsuarioConfiguration.cs" />
     <Compile Include="EmailData.cs" />
     <Compile Include="EmpresaData.cs" />
+    <Compile Include="EmpresaUsuarioData.cs" />
     <Compile Include="LogData.cs" />
     <Compile Include="PerfilData.cs" />
     <Compile Include="PerfilFuncionalidadeData.cs" />

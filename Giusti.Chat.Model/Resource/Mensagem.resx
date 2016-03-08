@@ -129,6 +129,15 @@
   <data name="Email_DestinatarioTamanho" xml:space="preserve">
     <value>O tamanho do campo destinatário excedeu o limite</value>
   </data>
+  <data name="EmpresaUsuario_EmailTamanho" xml:space="preserve">
+    <value>O tamanho do campo email excedeu o limite</value>
+  </data>
+  <data name="EmpresaUsuario_NomeTamanho" xml:space="preserve">
+    <value>O tamanho do campo nome excedeu o limite</value>
+  </data>
+  <data name="EmpresaUsuario_SenhaTamanho" xml:space="preserve">
+    <value>O tamanho do campo senha excedeu o limite</value>
+  </data>
   <data name="Empresa_EmailUsuarioAdmTamanho" xml:space="preserve">
     <value>O tamanho do campo email usuário adm excedeu o limite</value>
   </data>

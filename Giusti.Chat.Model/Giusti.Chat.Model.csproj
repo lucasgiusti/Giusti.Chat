@@ -48,6 +48,7 @@
     <Compile Include="Dominio\EnumSituacao.cs" />
     <Compile Include="Email.cs" />
     <Compile Include="Empresa.cs" />
+    <Compile Include="EmpresaUsuario.cs" />
     <Compile Include="PerfilFuncionalidade.cs" />
     <Compile Include="Dominio\EnumTipoAcao.cs" />
     <Compile Include="Funcionalidade.cs" />

@@ -165,7 +165,7 @@ namespace Giusti.Chat.Business
                     using (EmpresaData data = new EmpresaData())
                     {
                         data.SalvaEmpresa(itemGravar);
-                        IncluiSucessoBusiness("Usuario_NovaSenhaGeradaOK");
+                        IncluiSucessoBusiness("Empresa_NovaSenhaGeradaOK");
 
                         GeraEmailEsqueciSenha(itemGravar, novaSenha);
                     }
