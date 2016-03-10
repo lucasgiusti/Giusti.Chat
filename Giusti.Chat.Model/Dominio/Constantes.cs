@@ -38,12 +38,14 @@ namespace Giusti.Chat.Model.Dominio
         public static readonly string FuncionalidadeUsuarioEdicao = "11";
         public static readonly string FuncionalidadeUsuarioInclusao = "12";
         public static readonly string FuncionalidadeUsuarioExclusao = "13";
+        public static readonly string FuncionalidadeUsuarioConsultaAtendente = "29";
 
         public static readonly string FuncionalidadeNomeUsuario = "Usuário";
         public static readonly string FuncionalidadeNomeUsuarioConsulta = "Usuário Consulta";
         public static readonly string FuncionalidadeNomeUsuarioEdicao = "Usuário Edição";
         public static readonly string FuncionalidadeNomeUsuarioInclusao = "Usuário Inclusão";
         public static readonly string FuncionalidadeNomeUsuarioExclusao = "Usuário Exclusão";
+        public static readonly string FuncionalidadeNomeUsuarioConsultaAtendente = "Usuário Consulta Atendente";
 
         public static readonly string FuncionalidadeAlterarSenha = "14";
         public static readonly string FuncionalidadeNomeAlterarSenha = "Alterar Senha";

@@ -1,4 +1,4 @@
-app.controller('headerController', function ($scope, $http, toasterAlert, $uibModal, UserService, $location) {
+app.controller('headerController', function ($scope, $http, toasterAlert, $uibModal, UserService, $location, socket) {
 
     $scope.usuario = null;
     $scope.navbarCollapsed = true;

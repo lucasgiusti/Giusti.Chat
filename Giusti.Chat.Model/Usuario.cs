@@ -49,6 +49,7 @@ namespace Giusti.Chat.Model
         }
         public string NovaSenha { get; set; }
         public string SenhaConfirmacao { get; set; }
+        public bool? Disponivel { get; set; }
         public bool? Ativo { get; set; }
         public DateTime? DataInclusao { get; set; }
         public DateTime? DataAlteracao { get; set; }

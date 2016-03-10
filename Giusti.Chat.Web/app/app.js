@@ -1,4 +1,4 @@
-var app = angular.module('app', ['ngRoute', 'ngAnimate', 'ui.bootstrap', 'ngCookies', 'toaster'])
+var app = angular.module('app', ['ngRoute', 'ngAnimate', 'ui.bootstrap', 'ngCookies', 'toaster', 'socket-io'])
     .config(function ($routeProvider, $locationProvider) {
         $routeProvider.when('/', { templateUrl: 'app/templates/home.html', controller: 'homeController' });
         $routeProvider.when('/signin', { templateUrl: 'app/templates/signin.html', controller: 'signinController' });
@@ -14,10 +14,15 @@ var app = angular.module('app', ['ngRoute', 'ngAnimate', 'ui.bootstrap', 'ngCook
         $routeProvider.when('/empresa/add', { templateUrl: 'app/templates/empresa/empresa-add.html', controller: 'empresaController' });
         $routeProvider.when('/empresa/:id/edit', { templateUrl: 'app/templates/empresa/empresa-edit.html', controller: 'empresaController' });
         $routeProvider.when('/empresa/:id', { templateUrl: 'app/templates/empresa/empresa-view.html', controller: 'empresaController' });
+        $routeProvider.when('/area', { templateUrl: 'app/templates/area/areas.html', controller: 'areaController' });
+        $routeProvider.when('/area/add', { templateUrl: 'app/templates/area/area-add.html', controller: 'areaController' });
+        $routeProvider.when('/area/:id/edit', { templateUrl: 'app/templates/area/area-edit.html', controller: 'areaController' });
+        $routeProvider.when('/area/:id', { templateUrl: 'app/templates/area/area-view.html', controller: 'areaController' });
         $routeProvider.when('/alterarsenha', { templateUrl: 'app/templates/usuario/usuario-alterarSenha.html', controller: 'alterarSenhaController' });
         $routeProvider.when('/esquecisenha', { templateUrl: 'app/templates/usuario/usuario-esqueciSenha.html', controller: 'esqueciSenhaController' });
         $routeProvider.when('/log', { templateUrl: 'app/templates/logs/logs.html', controller: 'logController' });
         $routeProvider.when('/paginanaoencontrada', { templateUrl: 'app/templates/paginaNaoEncontrada.html', controller: 'paginaNaoEncontradaController' });
+        $routeProvider.when('/atendimento', { templateUrl: 'app/templates/atendimento/atendimentos.html', controller: 'atendimentoController' });
         $routeProvider.otherwise({ redirectTo: '/paginanaoencontrada' });
         $locationProvider.html5Mode(true);
     });
@@ -30,6 +35,30 @@ app.run(function ($rootScope) {
     $rootScope.$on('atualizaHeaderEmit', function (event, args) {
         $rootScope.$broadcast('atualizaHeaderBroadcast', args);
     });
+});
+
+app.factory('socket', function ($rootScope) {
+    var socket = io.connect('http://localhost:3000');
+    return {
+        on: function (eventName, callback) {
+            socket.on(eventName, function () {
+                var args = arguments;
+                $rootScope.$apply(function () {
+                    callback.apply(socket, args);
+                });
+            });
+        },
+        emit: function (eventName, data, callback) {
+            socket.emit(eventName, data, function () {
+                var args = arguments;
+                $rootScope.$apply(function () {
+                    if (callback) {
+                        callback.apply(socket, args);
+                    }
+                });
+            })
+        }
+    };
 });
 
 app.factory('UserService', function ($http, $window, $cookies, $location, toasterAlert) {

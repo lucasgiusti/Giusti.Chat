@@ -100,6 +100,42 @@ namespace Giusti.Chat.Web.Controllers.Api
         }
 
         /// <summary>
+        /// Retorna o usuário com id logado
+        /// </summary>
+        /// <returns></returns>
+        public Usuario GetForAtendimento()
+        {
+            Usuario ResultadoBusca = new Usuario();
+            try
+            {
+                VerificaAutenticacao(Constantes.FuncionalidadeUsuarioConsultaAtendente, Constantes.FuncionalidadeNomeUsuarioConsultaAtendente, biz);
+
+                //API
+                ResultadoBusca = biz.RetornaUsuario_Email(RetornaEmailAutenticado());
+
+                if (!biz.IsValid())
+                    throw new InvalidDataException();
+
+                if (ResultadoBusca != null)
+                    ResultadoBusca.Senha = null;
+            }
+            catch (InvalidDataException)
+            {
+                GeraErro(HttpStatusCode.InternalServerError, biz.serviceResult);
+            }
+            catch (UnauthorizedAccessException)
+            {
+                GeraErro(HttpStatusCode.Unauthorized, biz.serviceResult);
+            }
+            catch (Exception ex)
+            {
+                GeraErro(HttpStatusCode.BadRequest, ex);
+            }
+
+            return ResultadoBusca;
+        }
+
+        /// <summary>
         /// Inclui um usuário
         /// </summary>
         /// <param name="itemSalvar"></param>
