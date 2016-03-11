@@ -1,10 +1,61 @@
 ﻿<div ng-init="getUsuario()">
     <form class="form-horizontal">
         <div class="form-group">
-            <div class="col-sm-offset-1 col-sm-10">
-                <a class="btn btn-primary btn-large" href="#" ng-click="iniciaAtendimentos(true)" ng-show="!usuario.disponivel">Ficar Disponível</a>
-                <a class="btn btn-danger btn-large" href="#" ng-click="iniciaAtendimentos(false)" ng-show="usuario.disponivel">Tornar Indisponível</a>
+            <div class="col-sm-2">
+                <a class="btn btn-danger btn-large" href="#" ng-click="iniciaAtendimentos(true)" ng-show="!usuario.disponivel" uib-tooltip="Iniciar Atendimento" tooltip-placement="bottom">
+                    <img src="../../../images/atendente.png" style="width: 92px; " />
+                </a>
+                <a class="btn btn-default btn-large" href="#" ng-click="iniciaAtendimentos(false)" ng-show="usuario.disponivel" uib-tooltip="Finalizar Atendimento" tooltip-placement="bottom">
+                    <img src="../../../images/atendente.png" style="width: 92px; " />
+                </a>
             </div>
+            <div class="col-sm-1">
+                <a class="btn btn-primary btn-lg" href="#" style="width: 200px; height: 120px">
+                    <div>
+                        <div class="col-md-1">
+                            <img src="../../../images/user.png" style="margin-left: -20px" />
+                        </div>
+                        <div class="col-md-offset-2;">
+                            <h5 style="margin-right: -115px; margin-top: -2px"><strong>05:54</strong></h5>
+                        </div>
+                        <div class="col-md-offset-2;">
+                            <h5 style="margin-right: -115px; margin-top: -2px"><strong></strong>&nbsp;</h5>
+                        </div>
+
+                    </div>
+                    <div style="margin-top: 50px; margin-left: -80px">
+                        <h5><strong>Lucas Giusti</strong></h5>
+                    </div>
+                </a>
         </div>
+            <div class="col-sm-offset-1 col-sm-1">
+                <a class="btn btn-info btn-lg" href="#" style="width: 200px; height: 120px">
+                    <div>
+                        <div class="col-md-1">
+                            <img src="../../../images/user.png" style="margin-left: -20px" />
+                        </div>
+                        <div class="col-md-offset-2;">
+                            <h5 style="margin-right: -115px; margin-top: -2px"><strong>02:32</strong></h5>
+                        </div>
+                        <div class="col-md-offset-2;">
+                            <h5 style="margin-right: -115px; margin-top: -2px"><strong>00:12</strong></h5>
+                        </div>
+
+                    </div>
+                    <div style="margin-top: 50px; margin-left: -80px">
+                        <h5><strong>João da Silva</strong></h5>
+                    </div>
+                </a>
+            </div>
+            <div class="col-sm-offset-1 col-sm-1">
+                <a class="btn btn-default btn-lg" href="#" style="width: 200px; height: 120px">
+                    
+                </a>
+            </div>
+            <div class="col-sm-offset-1 col-sm-1">
+                <a class="btn btn-default btn-lg" href="#" style="width: 200px; height: 120px">
+                    
+                </a>
+            </div>
     </form>
 </div>
