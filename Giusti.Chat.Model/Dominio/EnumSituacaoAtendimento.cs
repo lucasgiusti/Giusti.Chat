@@ -5,9 +5,10 @@ using System.Text;
 
 namespace Giusti.Chat.Model.Dominio
 {
-    public enum EnumSituacao
+    public enum EnumSituacaoAtendimento
     {
-        Inativo = 0,
-        Ativo = 1
+        Livre = 0,
+        Ocupado = 1,
+        Indisponivel = 2
     }
 }

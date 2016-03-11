@@ -1,3 +1,10 @@
-﻿<div>
-Blah
+﻿<div ng-init="getUsuario()">
+    <form class="form-horizontal">
+        <div class="form-group">
+            <div class="col-sm-offset-1 col-sm-10">
+                <a class="btn btn-primary btn-large" href="#" ng-click="iniciaAtendimentos(true)" ng-show="!usuario.disponivel">Ficar Disponível</a>
+                <a class="btn btn-danger btn-large" href="#" ng-click="iniciaAtendimentos(false)" ng-show="usuario.disponivel">Tornar Indisponível</a>
+            </div>
+        </div>
+    </form>
 </div>

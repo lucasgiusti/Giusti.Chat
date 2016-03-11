@@ -40,7 +40,11 @@ namespace Giusti.Chat.Web.Controllers.Api
                 if (!biz.IsValid())
                     throw new InvalidDataException();
 
-                ResultadoBusca.ForEach(a => a.Senha = null);
+                ResultadoBusca.ForEach(a => {
+                    a.Senha = null;
+                    a.NovaSenha = null;
+                    a.SenhaConfirmacao = null;
+                });
             }
             catch (InvalidDataException)
             {
@@ -81,7 +85,11 @@ namespace Giusti.Chat.Web.Controllers.Api
                     throw new InvalidDataException();
 
                 if (ResultadoBusca != null)
+                {
                     ResultadoBusca.Senha = null;
+                    ResultadoBusca.NovaSenha = null;
+                    ResultadoBusca.SenhaConfirmacao = null;
+                }
             }
             catch (InvalidDataException)
             {
@@ -108,7 +116,7 @@ namespace Giusti.Chat.Web.Controllers.Api
             Usuario ResultadoBusca = new Usuario();
             try
             {
-                VerificaAutenticacao(Constantes.FuncionalidadeUsuarioConsultaAtendente, Constantes.FuncionalidadeNomeUsuarioConsultaAtendente, biz);
+                VerificaAutenticacao(Constantes.FuncionalidadeAtendimento, Constantes.FuncionalidadeNomeAtendimento, biz);
 
                 //API
                 ResultadoBusca = biz.RetornaUsuario_Email(RetornaEmailAutenticado());
@@ -117,7 +125,11 @@ namespace Giusti.Chat.Web.Controllers.Api
                     throw new InvalidDataException();
 
                 if (ResultadoBusca != null)
+                {
                     ResultadoBusca.Senha = null;
+                    ResultadoBusca.NovaSenha = null;
+                    ResultadoBusca.SenhaConfirmacao = null;
+                }
             }
             catch (InvalidDataException)
             {
@@ -154,6 +166,7 @@ namespace Giusti.Chat.Web.Controllers.Api
                 if (itemSalvar != null)
                 {
                     itemSalvar.Senha = null;
+                    itemSalvar.NovaSenha = null;
                     itemSalvar.SenhaConfirmacao = null;
                 }
 
@@ -197,6 +210,7 @@ namespace Giusti.Chat.Web.Controllers.Api
                 if (itemSalvar != null)
                 {
                     itemSalvar.Senha = null;
+                    itemSalvar.NovaSenha = null;
                     itemSalvar.SenhaConfirmacao = null;
                 }
 

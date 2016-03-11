@@ -45,7 +45,7 @@
   <ItemGroup>
     <Compile Include="Area.cs" />
     <Compile Include="Dominio\Constantes.cs" />
-    <Compile Include="Dominio\EnumSituacao.cs" />
+    <Compile Include="Dominio\EnumSituacaoAtendimento.cs" />
     <Compile Include="Email.cs" />
     <Compile Include="Empresa.cs" />
     <Compile Include="PerfilFuncionalidade.cs" />
@@ -63,6 +63,7 @@
     <Compile Include="Results\ServiceResult.cs" />
     <Compile Include="Results\ServiceResultMessage.cs" />
     <Compile Include="Usuario.cs" />
+    <Compile Include="UsuarioAtendimento.cs" />
     <Compile Include="UsuarioLogado.cs" />
   </ItemGroup>
   <ItemGroup>

@@ -121,6 +121,7 @@
     <Compile Include="Controllers\Api\EsqueciSenhaController.cs" />
     <Compile Include="Controllers\Api\FuncionalidadeController.cs" />
     <Compile Include="Controllers\Api\LogController.cs" />
+    <Compile Include="Controllers\Api\UsuarioAtendimentoController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\Api\UsuarioController.cs" />
     <Compile Include="Controllers\Api\PerfilController.cs" />

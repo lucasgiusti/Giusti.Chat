@@ -139,12 +139,14 @@ namespace Giusti.Chat.Business
                     ValidaExistencia(itemBase);
                     if (IsValid())
                     {
+                        itemGravar.Chave = itemBase.Chave;
                         itemGravar.DataInclusao = itemBase.DataInclusao;
                         itemGravar.DataAlteracao = DateTime.Now;
                     }
                 }
                 else
                 {
+                    itemGravar.Chave = Guid.NewGuid().ToString();
                     itemGravar.DataInclusao = DateTime.Now;
                     itemGravar.Ativo = true;
                 }

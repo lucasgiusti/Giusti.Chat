@@ -59,11 +59,11 @@
                 <a class="navbar-brand" href="#" ng-click="gotoHome()">Giusti.Chat</a>
             </div>
             <div class="navbar-collapse collapse" uib-collapse="navbarCollapsed">
-                <ul class="nav navbar-nav">
+                <ul class="nav navbar-nav" ng-show="!(usuario.atendendo == true)">
                     <li ng-repeat="menu in usuario.menus" ng-include="'menuTree'"></li>
                 </ul>
 
-                <ul class="nav navbar-nav navbar-right">
+                <ul class="nav navbar-nav navbar-right" ng-show="!(usuario.atendendo == true)">
                     <li class="dropdown" uib-dropdown>
                         <a class="dropdown-toggle btn btn-link" data-toggle="dropdown" uib-dropdown-toggle style="border: 0px">
                             {{usuario.nome}}

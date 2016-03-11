@@ -23,6 +23,7 @@ namespace Giusti.Chat.Model
                 results.AddResult(result);
             }
         }
+        public string Chave { get; set; }
         public bool? Ativo { get; set; }
         public DateTime? DataInclusao { get; set; }
         public DateTime? DataAlteracao { get; set; }

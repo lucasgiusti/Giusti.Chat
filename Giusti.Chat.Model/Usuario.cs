@@ -10,6 +10,7 @@ namespace Giusti.Chat.Model
         public Usuario()
         {
             Perfis = new List<PerfilUsuario>();
+            UsuarioAtendimentos = new List<UsuarioAtendimento>();
         }
 
         public int? Id { get; set; }
@@ -55,6 +56,7 @@ namespace Giusti.Chat.Model
         public DateTime? DataAlteracao { get; set; }
         public Empresa Empresa { get; set; }
         public IList<PerfilUsuario> Perfis { get; set; }
+        public IList<UsuarioAtendimento> UsuarioAtendimentos { get; set; }
         public Usuario Clone()
         {
             return (Usuario)this.MemberwiseClone();

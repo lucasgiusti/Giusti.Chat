@@ -17,7 +17,7 @@ app.controller('homeController', function ($scope, $window, $http, $location, Us
 
         }).error(function (jqxhr, textStatus) {
             if (textStatus) {
-                $location.path('atendimento');
+                $location.path('');
             }
         });
     };

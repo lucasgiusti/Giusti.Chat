@@ -51,10 +51,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AreaData.cs" />
+    <Compile Include="AtendimentoData.cs" />
     <Compile Include="Configuration\AreaConfiguration.cs" />
     <Compile Include="Configuration\EmailConfiguration.cs" />
     <Compile Include="Configuration\EmpresaConfiguration.cs" />
     <Compile Include="Configuration\PerfilUsuarioConfiguration.cs" />
+    <Compile Include="Configuration\UsuarioAtendimentoConfiguration.cs" />
     <Compile Include="EmailData.cs" />
     <Compile Include="EmpresaData.cs" />
     <Compile Include="LogData.cs" />

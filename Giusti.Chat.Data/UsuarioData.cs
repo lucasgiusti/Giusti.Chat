@@ -31,7 +31,7 @@ namespace Giusti.Chat.Data
         }
         public Usuario RetornaUsuario_Email(string email)
         {
-            IQueryable<Usuario> query = Context.Usuarios.Include("Perfis").Include("Empresa");
+            IQueryable<Usuario> query = Context.Usuarios.Include("Perfis").Include("Empresa").Include("UsuarioAtendimentos");
 
             if (!string.IsNullOrEmpty(email))
                 query = query.Where(d => d.Email == email);

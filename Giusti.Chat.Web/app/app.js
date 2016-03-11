@@ -81,7 +81,6 @@ app.factory('UserService', function ($http, $window, $cookies, $location, toaste
                 $http.get(urlFuncionalidade, headerAuth).success(function (data) {
                     newUser.menus = data;
                     $cookies.put('user', JSON.stringify(newUser));
-                    $location.path('');
                 }).error(function (jqxhr, textStatus) {
                     toasterAlert.showAlert(jqxhr.message);
                 });
@@ -93,8 +92,13 @@ app.factory('UserService', function ($http, $window, $cookies, $location, toaste
         verificaLogin: function () {
             var user = this.getUser();
             if (!user) {
-               $location.path('signin');
+                $location.path('signin');
             }
+            else {
+                if (user.atendendo) {
+                    $location.path('atendimento');
+                }
+            };
         }
     };
 });

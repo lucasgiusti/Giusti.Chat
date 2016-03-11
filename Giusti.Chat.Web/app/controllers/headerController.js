@@ -31,9 +31,14 @@ app.controller('headerController', function ($scope, $http, toasterAlert, $uibMo
         });
 
         modalInstance.result.then(function () {
-            UserService.setUser(null);
-            $location.path('\signin');
+            $scope.cookieDestroy();            
         });
+    };
+
+    $scope.cookieDestroy = function () {
+        UserService.setUser(null);
+        $scope.$emit('atualizaHeaderEmit', null);
+        $location.path('signin');
     };
 
     $scope.gotoHome = function () {
