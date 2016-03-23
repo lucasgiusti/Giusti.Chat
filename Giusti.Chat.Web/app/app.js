@@ -23,6 +23,7 @@ var app = angular.module('app', ['ngRoute', 'ngAnimate', 'ui.bootstrap', 'ngCook
         $routeProvider.when('/log', { templateUrl: 'app/templates/logs/logs.html', controller: 'logController' });
         $routeProvider.when('/paginanaoencontrada', { templateUrl: 'app/templates/paginaNaoEncontrada.html', controller: 'paginaNaoEncontradaController' });
         $routeProvider.when('/atendimento', { templateUrl: 'app/templates/atendimento/atendimentos.html', controller: 'atendimentoController' });
+        $routeProvider.when('/atendimento/sala', { templateUrl: 'app/templates/atendimento/sala.html', controller: 'atendimentoSalaController' });
         $routeProvider.otherwise({ redirectTo: '/paginanaoencontrada' });
         $locationProvider.html5Mode(true);
     });

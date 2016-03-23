@@ -3,6 +3,7 @@
 /// <reference path="../app/controllers/alterarsenhacontroller.js" />
 /// <reference path="../app/controllers/areacontroller.js" />
 /// <reference path="../app/controllers/atendimentocontroller.js" />
+/// <reference path="../app/controllers/atendimentosalacontroller.js" />
 /// <reference path="../app/controllers/empresacontroller.js" />
 /// <reference path="../app/controllers/esquecisenhacontroller.js" />
 /// <reference path="../app/controllers/headercontroller.js" />

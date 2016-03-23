@@ -137,6 +137,7 @@
     <Content Include="app\controllers\alterarSenhaController.js" />
     <Content Include="app\controllers\areaController.js" />
     <Content Include="app\controllers\atendimentoController.js" />
+    <Content Include="app\controllers\atendimentoSalaController.js" />
     <Content Include="app\controllers\empresaController.js" />
     <Content Include="app\controllers\esqueciSenhaController.js" />
     <Content Include="app\controllers\headerController.js" />
@@ -152,6 +153,7 @@
     <Content Include="app\templates\area\area-view.html" />
     <Content Include="app\templates\area\areas.html" />
     <Content Include="app\templates\atendimento\atendimentos.html" />
+    <Content Include="app\templates\atendimento\sala.html" />
     <Content Include="app\templates\empresa\empresa-add.html" />
     <Content Include="app\templates\empresa\empresa-edit.html" />
     <Content Include="app\templates\empresa\empresa-view.html" />

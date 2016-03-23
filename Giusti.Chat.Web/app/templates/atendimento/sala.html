@@ -1,11 +1,11 @@
-﻿<div ng-init="getUsuario()">
+﻿<div>
     <form class="form-horizontal">
         <div class="form-group">
-            <a class="btn btn-danger btn-large" href="#" ng-click="iniciaAtendimentos(true)" ng-show="!usuario.disponivel" uib-tooltip="Iniciar Atendimento" tooltip-placement="bottom">
-                <img src="../../../images/atendente.png" style="width: 92px; " />
+            <a class="btn btn-danger btn-large" href="#" ng-click="iniciaAtendimento(true)" ng-show="sala == null" uib-tooltip="Iniciar Atendimento" tooltip-placement="bottom">
+                Iniciar Atendimento
             </a>
-            <a class="btn btn-default btn-large" href="#" ng-click="iniciaAtendimentos(false)" ng-show="usuario.disponivel" uib-tooltip="Finalizar Atendimento" tooltip-placement="bottom">
-                <img src="../../../images/atendente.png" style="width: 92px; " />
+            <a class="btn btn-default btn-large" href="#" ng-click="iniciaAtendimento(false)" ng-show="sala != null" uib-tooltip="Finalizar Atendimento" tooltip-placement="bottom">
+                Finalizar Atendimento
             </a>
         </div>
         <div class="form-group">
@@ -21,7 +21,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr ng-repeat="sala in salas">
+                    <tr>
                         <td>{{sala.id}}</td>
                         <td>{{sala.guidAtendente}}</td>
                         <td>{{sala.chaveEmpresa}}</td>
@@ -34,5 +34,5 @@
                 </tbody>
             </table>
         </div>
-</form>
+    </form>
 </div>

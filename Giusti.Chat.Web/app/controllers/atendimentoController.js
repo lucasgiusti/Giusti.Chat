@@ -1,4 +1,4 @@
-﻿app.controller('atendimentoController', function ($scope, $http, $window, toasterAlert, $location, $uibModal, $routeParams, UserService, socket) {
+﻿app.controller('atendimentoController', function ($scope, $http, $window, toasterAlert, $location, $uibModal, $routeParams, UserService, socket, guid) {
     UserService.verificaLogin();
 
     var url = 'api/usuarioAtendimento';
@@ -7,12 +7,14 @@
     $scope.usuario = null;
     $scope.usuarioOld = null;
     $scope.salas = [];
+    $scope.guidAtendente = guid;
 
     //APIs
     $scope.getUsuario = function () {
 
         $http.get(urlUsuario + '/GetForAtendimento', headerAuth).success(function (data) {
             $scope.usuario = data;
+            $scope.usuarioId = data.id;
 
         }).error(function (jqxhr, textStatus) {
             toasterAlert.showAlert(jqxhr.message);
@@ -47,7 +49,7 @@
     $scope.criaSalas = function () {
         $scope.salas = [];
         for (var i = 0; i < $scope.usuario.usuarioAtendimentos.length; i++) {
-            var sala = { id: $scope.usuario.usuarioAtendimentos, usuarioId: $scope.usuario.id, chaveEmpresa: $scope.usuario.empresa.chave };
+            var sala = { id: $scope.usuario.usuarioAtendimentos[i].id, guidAtendente: $scope.guidAtendente, chaveEmpresa: $scope.usuario.empresa.chave, situacao: 0, guidCliente: null, mensagens: [] };
             $scope.salas.push(sala);
         }
         socket.emit('iniciaAtendimentos', $scope.salas);
@@ -57,4 +59,12 @@
         socket.emit('excluiAtendimentos', $scope.salas);
         $scope.salas = [];
     };
+
+    socket.on('atualizaSalaAtendente-' + $scope.guidAtendente, function (sala) {
+        for (var i = 0; i <= $scope.salas.length; i++) {
+            if ($scope.salas[i].id == sala.id) {
+                $scope.salas[i] = sala;
+            }
+        }
+    });
 });

@@ -56,8 +56,7 @@ namespace Giusti.Chat.Business
                         else
                             itemGravar.UsuarioAtendimentos.ToList().ForEach(a => { a.Situacao = (int)EnumSituacaoAtendimento.Indisponivel; a.DataAlteracao = DateTime.Now; });
 
-                        if (string.IsNullOrWhiteSpace(itemGravar.Senha) && string.IsNullOrWhiteSpace(itemGravar.SenhaConfirmacao))
-                            itemGravar.Senha = itemBase.Senha;
+                        itemGravar.Senha = itemBase.Senha;
                     }
                 }
             }
