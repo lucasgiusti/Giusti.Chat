@@ -2,7 +2,7 @@ app.controller('perfilController', function ($scope, $http, $window, toasterAler
     UserService.verificaLogin();
 
     var mensagemExcluir = 'Deseja realmente excluir o perfil [NOMEPERFIL] ?';
-    var mensagemSalvo = JSON.stringify({ Success: "info", Messages: [{ Message: 'Perfil salvo com sucesso' }] });
+    var mensagemSalvo = JSON.stringify({ Success: true, Messages: [{ Message: 'Perfil salvo com sucesso' }] });
     var url = 'api/perfil';
     var urlFuncionalidade = 'api/funcionalidade';
     var headerAuth = { headers: { 'Authorization': 'Basic ' + UserService.getUser().token } };

@@ -1,6 +1,7 @@
 ﻿app.controller('atendimentoController', function ($scope, $http, $window, toasterAlert, $location, $uibModal, $routeParams, UserService, socket, guid) {
     UserService.verificaLogin();
 
+    var mensagemNaoPodeFinalizar = JSON.stringify({ Success: false, Messages: [{ Message: 'É Necessário finalizar todos os atendimentos para tornar-se indisponível.' }] });
     var url = 'api/usuarioAtendimento';
     var urlUsuario = 'api/usuario';
     var headerAuth = { headers: { 'Authorization': 'Basic ' + UserService.getUser().token } };
@@ -30,16 +31,34 @@
 
             if ($scope.usuario.disponivel) {
                 $scope.criaSalas();
+
+                var user = UserService.getUser();
+                user.atendendo = $scope.usuario.disponivel;
+                UserService.setUser(user);
+                $scope.$emit('atualizaHeaderEmit', user);
             }
             else {
-                $scope.excluiSalas();
+                var podeExcluir = true;
+                for (var i = 0; i < $scope.salas.length; i++) {
+                    console.log($scope.salas[i]);
+                    if ($scope.salas[i].situacao == 1) {
+                        podeExcluir = false;
+                    }
+                }
+
+                if (podeExcluir) {
+                    $scope.excluiSalas();
+
+                    var user = UserService.getUser();
+                    user.atendendo = $scope.usuario.disponivel;
+                    UserService.setUser(user);
+                    $scope.$emit('atualizaHeaderEmit', user);
+                }
+                else {
+                    angular.copy($scope.usuarioOld, $scope.usuario);
+                    toasterAlert.showAlert(mensagemNaoPodeFinalizar);
+                }
             }
-
-            var user = UserService.getUser();
-            user.atendendo = $scope.usuario.disponivel;
-            UserService.setUser(user);
-            $scope.$emit('atualizaHeaderEmit', user);
-
         }).error(function (jqxhr, textStatus) {
             angular.copy($scope.usuarioOld, $scope.usuario);
             toasterAlert.showAlert(jqxhr.message);
@@ -60,8 +79,16 @@
         $scope.salas = [];
     };
 
+    $scope.novaMensagem = function (guidCliente) {
+        socket.emit('novaMensagem', { 'guidCliente': guidCliente, enviadaPor: 'ATENDENTE', texto: 'nova mensagem do atendente.' });
+    };
+
+    $scope.finalizaAtendimento = function (guidCliente) {
+        socket.emit('finalizaAtendimento', guidCliente);
+    };
+
     socket.on('atualizaSalaAtendente-' + $scope.guidAtendente, function (sala) {
-        for (var i = 0; i <= $scope.salas.length; i++) {
+        for (var i = 0; i < $scope.salas.length; i++) {
             if ($scope.salas[i].id == sala.id) {
                 $scope.salas[i] = sala;
             }

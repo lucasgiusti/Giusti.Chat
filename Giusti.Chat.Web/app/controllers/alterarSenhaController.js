@@ -1,7 +1,7 @@
 app.controller('alterarSenhaController', function ($scope, $http, toasterAlert, UserService, $location) {
     UserService.verificaLogin();
 
-    var mensagemSalvo = JSON.stringify({ Success: "info", Messages: [{ Message: 'Senha alterada com sucesso' }] });
+    var mensagemSalvo = JSON.stringify({ Success: true, Messages: [{ Message: 'Senha alterada com sucesso' }] });
     var url = 'api/alterarsenha';
     var headerAuth = { headers: { 'Authorization': 'Basic ' + UserService.getUser().token } };
 

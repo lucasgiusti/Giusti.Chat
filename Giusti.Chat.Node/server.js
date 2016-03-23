@@ -56,6 +56,22 @@ io.sockets.on('connection', function (socket) {
             salas[salas.indexOf(salaCliente)] = salaCliente;
             io.sockets.emit('atualizaSalaAtendente-' + salaCliente.guidAtendente, sala = salaCliente);
         }
-        socket.emit('atualizaSalaCliente-' + guidCliente, sala = null);
+        io.sockets.emit('atualizaSalaCliente-' + guidCliente, sala = null);
+    });
+
+    socket.on('novaMensagem', function (mensagem) {
+        
+        var salaCliente = null;
+        for (var i = 0; i < salas.length; i++) {
+            if (salas[i].guidCliente == mensagem.guidCliente)
+                salaCliente = salas[i];
+        }
+        if (salaCliente != null) {
+            salaCliente.mensagens.push({ texto: mensagem.texto });
+            salas[salas.indexOf(salaCliente)] = salaCliente;
+            
+            io.sockets.emit('atualizaSalaAtendente-' + salaCliente.guidAtendente, sala = salaCliente);
+            io.sockets.emit('atualizaSalaCliente-' + mensagem.guidCliente, sala = salaCliente);
+        }
     });
 });

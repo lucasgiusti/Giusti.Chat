@@ -10,7 +10,7 @@ app.controller('esqueciSenhaController', function ($scope, $http, toasterAlert, 
     $scope.postGeraNovaSenha = function () {
 
         $http.post(url, $scope.usuario).success(function (data) {
-            toasterAlert.showAlert(JSON.stringify({ Success: "info", Messages: [{ Message: mensagemSalvo.replace('[EMAIL]', $scope.usuario.email) }] }));
+            toasterAlert.showAlert(JSON.stringify({ Success: true, Messages: [{ Message: mensagemSalvo.replace('[EMAIL]', $scope.usuario.email) }] }));
             $scope.usuario = {};
         }).error(function (jqxhr, textStatus) {
             toasterAlert.showAlert(jqxhr.message);

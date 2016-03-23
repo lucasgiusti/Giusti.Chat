@@ -2,7 +2,7 @@
     UserService.verificaLogin();
 
     var mensagemExcluir = 'Deseja realmente excluir a area [NOMEAREA] ?';
-    var mensagemSalvo = JSON.stringify({ Success: "info", Messages: [{ Message: 'Área salva com sucesso' }] });
+    var mensagemSalvo = JSON.stringify({ Success: true, Messages: [{ Message: 'Área salva com sucesso' }] });
     var url = 'api/area';
     var headerAuth = { headers: { 'Authorization': 'Basic ' + UserService.getUser().token } };
 

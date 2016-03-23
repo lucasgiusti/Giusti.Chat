@@ -21,6 +21,10 @@
         socket.emit('finalizaAtendimento', $scope.guidCliente);
     };
 
+    $scope.novaMensagem = function () {
+        socket.emit('novaMensagem', { guidCliente: $scope.guidCliente, enviadaPor: 'CLIENTE', texto: 'nova mensagem do cliente.' });
+    };
+
     socket.on('atualizaSalaCliente-' + $scope.guidCliente, function (sala) {
         $scope.sala = sala;
     });

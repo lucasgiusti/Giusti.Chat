@@ -2,7 +2,7 @@
     UserService.verificaLogin();
 
     var mensagemExcluir = 'Deseja realmente excluir a empresa [NOMEEMPRESA] ?';
-    var mensagemSalvo = JSON.stringify({ Success: "info", Messages: [{ Message: 'Empresa salva com sucesso' }] });
+    var mensagemSalvo = JSON.stringify({ Success: true, Messages: [{ Message: 'Empresa salva com sucesso' }] });
     var url = 'api/empresa';
     var headerAuth = { headers: { 'Authorization': 'Basic ' + UserService.getUser().token } };
 

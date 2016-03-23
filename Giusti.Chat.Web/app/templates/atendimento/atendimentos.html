@@ -28,6 +28,12 @@
                         <td>{{sala.situacao}}</td>
                         <td>{{sala.guidCliente}}</td>
                         <td>
+                            <a class="btn btn-default btn-large" href="#" ng-click="finalizaAtendimento(sala.guidCliente)" ng-show="sala.situacao == 1" uib-tooltip="Finalizar Atendimento" tooltip-placement="bottom">
+                                Finalizar Atendimento
+                            </a>
+                            <a class="btn btn-default btn-large" href="#" ng-click="novaMensagem(sala.guidCliente)" ng-show="sala.situacao == 1">
+                                Nova Mensagem
+                            </a>
                             <p ng-repeat="mensagem in sala.mensagens">{{mensagem.texto}}</p>
                         </td>
                     </tr>
