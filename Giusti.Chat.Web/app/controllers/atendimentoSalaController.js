@@ -2,6 +2,7 @@
 
     $scope.sala = null;
     $scope.guidCliente = guid;
+    $scope.chaveEmpresa = null;
     
     $scope.iniciaAtendimento = function (iniciar) {
 
@@ -14,7 +15,14 @@
     };
 
     $scope.solicitaAtendimento = function () {
-        socket.emit('solicitaAtendimento', $scope.guidCliente);
+        if (!angular.isUndefined($routeParams.chaveEmpresa)) {
+            $scope.chaveEmpresa = $routeParams.chaveEmpresa;
+        }
+        else {
+            $location.path('');
+        }
+
+        socket.emit('solicitaAtendimento', { chaveEmpresa: $scope.chaveEmpresa, guidCliente: $scope.guidCliente });
     };
 
     $scope.finalizaAtendimento = function () {

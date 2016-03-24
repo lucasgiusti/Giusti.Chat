@@ -22,24 +22,24 @@ io.sockets.on('connection', function (socket) {
         };
     });
     
-    socket.on('solicitaAtendimento', function (guidCliente) {
+    socket.on('solicitaAtendimento', function (solicitacao) {
         
         var salasDisponiveis = [];
         for (var i = 0; i < salas.length; i++) {
-            if (salas[i].situacao == 0)
+            if (salas[i].chaveEmpresa == solicitacao.chaveEmpresa && salas[i].situacao == 0)
                 salasDisponiveis.push(salas[i]);
         }
         if (salasDisponiveis.length > 0) {
             var salaDisponivel = salasDisponiveis[Math.floor(Math.random() * salasDisponiveis.length)];
             
             salaDisponivel.situacao = 1;
-            salaDisponivel.guidCliente = guidCliente;
+            salaDisponivel.guidCliente = solicitacao.guidCliente;
             salas[salas.indexOf(salaDisponivel)] = salaDisponivel;
             io.sockets.emit('atualizaSalaAtendente-' + salaDisponivel.guidAtendente, sala = salaDisponivel);
-            socket.emit('atualizaSalaCliente-' + guidCliente, sala = salaDisponivel);
+            socket.emit('atualizaSalaCliente-' + solicitacao.guidCliente, sala = salaDisponivel);
         }
         else {
-            socket.emit('atualizaSalaCliente-' + guidCliente, sala = null);
+            socket.emit('atualizaSalaCliente-' + solicitacao.guidCliente, sala = null);
         }
     });
     

@@ -156,6 +156,7 @@ namespace Giusti.Chat.Web.Controllers.Api
         {
             try
             {
+
                 VerificaAutenticacao(Constantes.FuncionalidadeUsuarioInclusao, Constantes.FuncionalidadeNomeUsuarioInclusao, biz);
 
                 //API
